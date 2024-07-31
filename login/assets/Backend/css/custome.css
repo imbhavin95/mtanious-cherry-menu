@@ -1,0 +1,248 @@
+@font-face {
+    font-family: 'Avenir LT Std';
+    src: url('font/AvenirLTStd-Roman.woff2') format('woff2'),
+        url('font/AvenirLTStd-Roman.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir LT Std';
+    src: url('font/AvenirLTStd-Black.woff2') format('woff2'),
+        url('font/AvenirLTStd-Black.woff') format('woff');
+    font-weight: 900;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Avenir LT Std';
+    src: url('font/AvenirLTStd-Book.woff2') format('woff2'),
+        url('font/AvenirLTStd-Book.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.require-field{
+    color: red
+}
+.drop-table > tbody> tr:last-child > td:last-child .btn-group .dropdown-menu {
+    top: inherit;
+    bottom: 35px;
+}
+.drop-table > tbody> tr:last-child > td:last-child .btn-group{
+   min-width: 160px;     
+}
+#restaurant_wrapper{
+    padding-bottom: 10px;
+}
+#items_form .form-group{
+    min-height: 88px;
+}
+#restaurant .form-group{
+    min-height: 88px;
+}
+.sidebar-panel li ul{
+    list-style-type: none;
+}
+.form-group  input[type="file"]{
+    height: auto;
+}
+.mb-10{
+    margin-bottom: 10px;
+}
+/* .left-graph .panel.panel-default {
+    min-height: 539px;
+} */
+@media(min-width:768px){
+    .d-flex{
+        display: flex;
+        
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+      
+    }
+    .d-flex > .left-graph,.d-flex > .right-graph{
+        -webkit-flex: 1 1 50; /* this */
+    flex: 1;
+    }
+    .d-flex > div .panel.panel-default {
+        height: 100%;
+    }
+    html{    background: #f5f5f5;}
+    html,body,.sidebar,.content{
+        min-height: 100%;
+    }
+    
+}
+
+.container-widget {
+    padding: 0;
+    margin-left: -5px;
+    margin-right: -5px;
+    min-height: 569px;
+}
+
+.page-header {
+    height: 74px;
+    background: #fff;
+    margin: -29px -30px 17px -30px;
+    padding: 17px;
+    border-bottom: none;
+    position: relative;
+}
+
+.login-form form .top .icon {
+    width: 240px;
+    height: 68px;
+}
+
+.login-form form .top {
+    border-bottom: none;
+    text-align: center;
+    padding: 28px 0 0 0;
+}
+.login-form{position: relative;z-index: 2;}
+.login-form form .top h2{position: relative;font-weight: 600;}
+.login-form form .top h2:after{content: '';height: 1px;width: 42%;background-color: #ddd;position: absolute;left: 0;top: 50%;}
+.login-form form .top h2:before{content: '';height: 1px;width: 42%;background-color: #ddd;position: absolute;right: 0;top: 50%;}
+h2.register-title:after , h2.register-title:before {width: 38% !important;}
+.login-form a.forgot-password {color: #797979;font-size: 15px;}
+.login-form form .form-area {padding: 20px 45px 20px 45px;}
+.login-form { width: 410px !important;}
+.login-form form img {margin-bottom: 8px !important;}
+body div , body p , body h2 {font-family: 'Avenir LT Std', sans-serif !important;}
+.ct-chart.ct-perfect-fourth:before {display: none !important;}
+.footer{overflow: hidden;}
+#restaurant .dropdown-menu{ max-height: 100px;overflow: auto;}
+#packages .dropdown-menu{ max-height: 100px;overflow: auto;}
+#helptopics .dropdown-menu{ max-height: 100px;overflow: auto;}
+#users .dropdown-menu{ max-height: 100px;overflow: auto;}
+#menus .dropdown-menu{ max-height: 100px;overflow: auto;}
+#items .dropdown-menu{ max-height: 100px;overflow: auto;}
+body .applogo, body  .sidebar-open-button, body #top{    height: 50px;}
+body  .sidebar-open-button{    padding-top: 13px;}
+body  .top-right{padding-top: 11px;}
+
+table.dataTable tbody th, table.dataTable tbody td {
+    padding: 14px 17px !important;
+}
+/* billing-page */
+.billing .widget-top {
+    background: #3085db;
+    color: #fff;
+}
+.billing .widget-top .panel-body {
+    display: flex;
+    align-items: center;
+    min-height: 154px;
+    justify-content: center;
+}
+.billing .widget-top .panel-body p {
+    margin: 0 0 4px 0;
+    font-size: 16px;
+}
+.billing .widget-top .panel-body p b {
+    text-transform: capitalize;
+    font-size: 13px;
+}
+.billing .widget-button .row {
+    display: flex;
+    align-items: center;
+}
+.billing .widget-button {
+    background: #3085db;
+    color: #fff;
+    min-height: 60px;
+    margin-bottom: 0;
+}
+.billing .widget-button p a {
+    display: inline-block;
+    margin-left: 10px;
+    text-decoration: underline;
+    font-size: 16px;
+    font-weight: 600;
+}
+.billing .widget-button .panel-body p {
+    font-size: 16px;
+    margin-bottom: 0;
+}
+.billing .widget-plans {
+    border: 1px solid #ddd;
+    padding: 0;
+    box-sizing: border-box;
+}
+.billing .widget-plans .panel-title {
+    padding: 0;
+    box-sizing: border-box;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 15px 15px;
+    border-bottom: 1px solid #dddd;
+}
+.billing .widget-plans .panel-body {
+    padding: 15px;
+}
+.billing .widget-plans .panel-title {
+    padding: 0;
+    box-sizing: border-box;
+    clear: both;
+    display: inline-block;
+    width: 100%;
+    margin: 0;
+    padding: 10px 15px;
+    border-bottom: 1px solid #dddd;
+}
+.billing .widget-plans .panel-title {
+    color: #4a4a4a;
+    font-weight: 500;
+}
+.billing .widget-plans .panel-body {
+    padding: 15px 15px;
+}
+.billing .widget-plans .panel-body h6 {
+    margin: 0;
+    font-size: 14px;
+    color: #4a4a4a;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+.billing .widget-plans .panel-body p {
+    margin: 0 0 2px 0;
+    font-size: 14px;
+    color: #9b9b9b;
+    line-height: normal;
+}
+.billing .widget-plans .panel-body .btn-upgrade {
+    display: inline-block;
+    line-height: 34px;
+    background: #3085db;
+    color: #fff;
+    padding: 0 20px;
+    min-width: 100px;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 40px;
+}
+.billing .widget-plans .panel-body .widget-plans-details {
+    font-size: 14px;
+    color: #4a4a4a;
+    margin: 0 0 3px 0;
+}
+.billing .widget-plans .panel-body .widget-plans-details .download-btn{
+    color: #9b9b9b;
+}
+.billing .widget-plans .panel-body .widget-plans-details .download-btn span {
+    display: inline-block;
+    margin-right: 15px;
+    float: right;
+}
+.billing .col-md-12 {
+    padding: 0 8px;
+}
+
+
+

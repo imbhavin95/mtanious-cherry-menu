@@ -1,0 +1,348 @@
+  * { 
+  font-family: 'Lato', sans-serif;
+  font-weight: 300;
+  transition: all .1s ease; 
+}
+
+html, body {
+    height: 100%;
+    margin: 0px;
+}
+
+h1 { font-size: 64px; }
+
+
+#langid {
+    margin: 45px 0;
+    padding: 5px 10px;
+    border: 1px solid #aaaa;
+    border-radius: 6px;
+    font-size: 13px;
+    color: #000;
+    font-family: monospace;
+}
+#langid option{
+    font-size: 13px;
+    color: #000;
+    font-family: monospace;
+}
+
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+    display: block;
+    margin: 6px 0px;
+}
+
+.page-section {
+  position: relative;
+  padding: 2em 3em 0em 3em;
+  margin-bottom: 0%;
+}
+
+.navigation {
+ padding: 0% 10%;
+  background-color: #F8F9FA;
+  z-index: 99999;
+  position: fixed;
+  width: 100%;
+  margin-top: 6%;
+  height: 40px;
+}
+ .navigation__link {
+   display: inline-block;
+  color: #000;
+  text-decoration: none;
+  padding: 0.3em 2em;
+  font-weight: 400;
+  background: #fff;
+      margin: 0 7px;
+    border-radius: 15px;
+}
+ .navigation__link:hover {
+   background-color: #aaa;
+   color: #fff;
+   text-decoration: none;
+}
+ .navigation__link.active {
+   color: #ffffff;
+    background-color: #CD0D2D;
+    border-radius: 16px;
+}
+.resturanrt-logo{
+  padding: 25px 0;
+  z-index: 99;
+}
+.cats-sec{
+  margin-top: 8%;
+}
+.menu-sec{
+margin-top: 8%;
+}
+.resturanrt-logo2{
+  height: 202px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    /* left: 2%; */
+    z-index: 99999;
+    width: 100%;
+    text-align: center;
+}
+.item-des{
+  background: #f1f1f1;
+  padding: 15px;
+  border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+}
+.item-des p{
+  font-size: 15px;
+    font-family: sans-serif;
+  color: #4a4a4a;
+  height: 25px;
+    overflow: hidden;
+    margin-bottom: 5px;
+}
+ .item-des h2{
+  font-size: 21px;
+  color: #4a4a4a;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+.item-img-name{
+  margin-bottom: 15px;
+}
+.item-img-name a{
+  text-decoration: none;
+}
+.item-img-name img{
+height: 222px;
+}
+.page-section h3{
+  margin-bottom: 30px;
+      margin-top: 45px;
+}
+.owl-carousel.owl-drag .owl-item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: auto !important;
+}
+.resturanrt-logo2 img {
+    width: 7%;
+        margin-left: 17%;
+}
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: #ffffff;
+   color: #4a4a4a;
+   text-align: center;
+   padding: 10px 0;
+   z-index: 99999;
+}
+.foot-content{
+  text-align: center;
+    border-top: 1px solid #4a4a4a;
+}
+.foot-content h5{
+  font-size: 16px;
+}
+@media only screen and  (max-width: 1024px){
+.no-js .owl-carousel, .owl-carousel.owl-loaded {
+    display: block;
+    margin: 6px 0px;
+}
+.navigation {
+    padding: 0% 10%;
+    background-color: #F8F9FA;
+    z-index: 99999;
+    position: fixed;
+    width: 100%;
+    margin-top: 11%;
+    height: 40px;
+}
+.navigation__link {
+   display: inline-block;
+  color: #000;
+  text-decoration: none;
+  padding: 0.4em 2em;
+  font-weight: 400;
+  background: #fff;
+    border-radius: 15px;
+}
+.cats-sec {
+    margin-top: 15%;
+}
+.page-section {
+    position: relative;
+    padding: 1em 3em;
+    margin-bottom: 0%;
+}
+.foot-content h5 {
+    font-size: 14px;
+    margin: 8px;
+}
+.foot-content {
+    text-align: center;
+    border-top: 1px solid #4a4a4a;
+    margin-top: 8px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    text-align: center;
+    padding: 0px 0;
+    z-index: 99999;
+}
+.resturanrt-logo2 img {
+    width: 12%;
+    margin-left: 18%;
+}
+}
+@media only screen and  (max-width: 768px){
+  .no-js .owl-carousel, .owl-carousel.owl-loaded {
+    display: block;
+    margin: 6px 0px;
+}
+.navigation__link {
+   display: inline-block;
+  color: #000;
+  text-decoration: none;
+  padding: 0.3em 2em;
+  font-weight: 400;
+  background: #fff;
+    border-radius: 15px;
+}
+.navigation {
+    padding: 0% 5%;
+    background-color: #F8F9FA;
+    z-index: 99999;
+    position: fixed;
+    width: 100%;
+    margin-top: 10%;
+    height: 40px;
+}
+.cats-sec {
+    margin-top: 20%;
+}
+.page-section {
+    position: relative;
+    padding: 1em 3em;
+    margin-bottom: 0%;
+}
+.item-img-name img {
+    height: 180px;
+}
+.foot-content h5 {
+    font-size: 11px;
+}
+.foot-content h5 {
+    font-size: 11px;
+    margin: 8px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    text-align: center;
+    padding: 0px 0;
+    z-index: 99999;
+}
+.resturanrt-logo2 img {
+    width: 12%;
+    margin-left: 56%;
+}
+}
+@media only screen and  (max-width: 480px){
+  .no-js .owl-carousel, .owl-carousel.owl-loaded {
+    display: block;
+    margin: 2px 0px;
+}
+.navigation{
+   padding: 1% 2%;
+    background-color: #F8F9FA;
+    z-index: 99999;
+    position: fixed;
+    width: 100%;
+    margin-top: 28%;
+    height: 40px;
+}
+.navigation__link {
+   display: inline-block;
+  color: #000;
+  text-decoration: none;
+  padding: 0.3em 2em;
+  font-weight: 400;
+  background: #fff;
+    border-radius: 15px;
+}
+.navigation__link {
+    display: inline-block;
+    color: #000;
+    text-decoration: none;
+    padding: 0.5em 1em;
+    font-weight: 400;
+    font-size: 12px;
+}
+.cats-sec {
+    margin-top: 45%;
+}
+.owl-carousel.owl-drag .owl-item {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    width: auto !important;
+}
+.page-section {
+    position: relative;
+    padding: 1em 2em;
+    margin-bottom: 0%;
+}
+.resturanrt-logo2 {
+    height: 150px;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    /* left: 2%; */
+    z-index: 99999;
+    width: 100%;
+    text-align: center;
+}
+.resturanrt-logo2 img {
+    width: 25%;
+    margin-left: 50%;
+}
+.page-section h3 {
+    margin-bottom: 30px;
+    margin-top: 20px;
+}
+
+ .foot-content {
+    margin-top: 7px;
+}   
+.foot-content h5 {
+    font-size: 10px;
+    margin: 6px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #ffffff;
+    color: #4a4a4a;
+    text-align: center;
+    padding: 0px 0;
+    z-index: 99999;
+}
+}

@@ -1,0 +1,22 @@
+#RewriteEngine on
+###AddType video/avi .avi
+#IndexIgnore *
+#RewriteCond $1 !^(index\.php|resources|robots\.txt)
+#RewriteCond %{REQUEST_FILENAME} !-f
+#RewriteCond %{REQUEST_FILENAME} !-d
+#RewriteRule ^(.*)$ index.php/$1 [L,QSA]
+#
+#
+## And for the files
+#RewriteCond %{SERVER_PORT} 80
+#RewriteRule ^(.*)$ http://cherry-menu.test/$1 [R,L]
+##
+##
+#php_value upload_max_filesize 50M
+#php_value post_max_size 50M
+
+RewriteEngine on
+RewriteBase /login/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php?/$1 [L]

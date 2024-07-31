@@ -1,0 +1,544 @@
+/* Table of Content
+==================================================
+	1.Reset & Basics
+	2.Basic Styles
+	3.Typography
+	4.Links
+	5.Misc
+
+
+/* Reset & Basics (Inspired by E. Meyers) */
+
+*,
+*:before,
+*:after {
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -o-box-sizing: border-box;
+}
+* {
+    margin: 0;
+    padding: 0;
+}
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+    text-decoration: none;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+ol,
+ul {
+    list-style: none;
+}
+blockquote,
+q {
+    quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+    text-decoration: none;
+}
+img {
+    display: inline-block;
+    vertical-align: middle;
+    height: auto;
+    max-width: 100%;
+}
+.map img {
+    max-width: none;
+}
+a:focus {
+    outline: 0;
+}
+iframe {
+    width: 100%;
+    frameborder: 0;
+    display: inline-block;
+}
+/* End reset & basics (Inspired by E. Meyers) */
+
+
+/*Basic Styles*/
+
+body {
+    background: #ffffff;
+    font-family: "Lato", "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+    color: #757575;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+    text-rendering: optimizelegibility;
+}
+.stop-scroll {
+    overflow: hidden;
+}
+/*End basic styles*/
+
+
+/* Typography and #Common style*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: #282828;
+    margin-bottom: 10px;
+    font-weight: 300;
+}
+em {
+    font-style: italic;
+}
+strong {
+    color: #282828;
+}
+p,
+blockquote {
+    line-height: 25px;
+}
+.main-nav li,
+p.lead,
+.feature .desc h4,
+.testi-details h5,
+.block-faq h4,
+.header .logo h2 span,
+.footer .logo h2 span {
+    font-weight: 400;
+}
+.header .logo h2,
+.footer .logo h2 {
+    font-weight: 700;
+}
+.testi-details blockquote {
+    font-weight: 300;
+}
+.block-teaser h1,
+.block-price span.price {
+    font-weight: 200;
+}
+h1.title {
+    font-size: 35px;
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+h3.title {
+    font-size: 33px;
+    margin-bottom: 20px;
+}
+h1.light {
+    color: #ffffff;
+    margin-bottom: 0;
+    margin-top: 0;
+}
+a.blue-link {
+    color: #4772d9;
+}
+p a:hover {
+    text-decoration: underline;
+}
+input[type]:-moz-placeholder {
+    color: #ffffff;
+    opacity: .6;
+}
+:-moz-placeholder {
+    color: #ffffff;
+    opacity: .6;
+}
+::-moz-placeholder {
+    color: #ffffff;
+    opacity: .6;
+}
+:-ms-input-placeholder {
+    color: #ffffff;
+    opacity: .6;
+}
+::-webkit-input-placeholder {
+    color: #ffffff;
+    opacity: .6;
+}
+section,
+.section {
+    position: relative;
+}
+.block-media .play-btn,
+.testi-img {
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+/* End typography and common style*/
+
+
+/*Links*/
+
+a,
+input[type="text"],
+input[type="submit"] textarea,
+.owl-theme .owl-controls .owl-page span,
+.mobile-but .lines:after,
+.mobile-but .lines:before {
+    transition: all 0.3s ease 0s;
+    -webkit-transition: all 0.3s ease 0s;
+    -moz-transition: all 0.3s ease 0s;
+    -ms-transition: all 0.3s ease 0s;
+    -o-transition: all 0.3s ease 0s;
+}
+.but {
+    padding: 12px 35px;
+    display: inline-block;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    -ms-border-radius: 3px;
+    -o-border-radius: 3px;
+    position: relative;
+    background: #f93d66;
+    color: #ffffff;
+}
+.but.mauve {
+    background: #4772d9;
+}
+.but.mauve:not(.submit):not(.login):hover {
+    background: #3e66c4;
+}
+.but:not(.submit):not(.login):hover {
+    background: #c73154;
+}
+.but.medium {
+    padding: 20px 35px;
+    font-size: 16px;
+}
+.but.large {
+    padding: 25px 35px;
+    font-size: 17px;
+}
+.but.login {
+    background: #ffffff;
+    border: none;
+}
+form.trial-form .but.submit {
+    background: #ffffff;
+    border: none;
+    color: #f93d66;
+}
+.but i {
+    position: relative;
+    left: 5px;
+}
+/*End links*/
+
+
+/*Misc */
+
+.pt-10 {
+    padding-top: 10px !important;
+}
+.pb-10 {
+    padding-bottom: 10px !important;
+}
+.pt-15 {
+    padding-top: 15px !important;
+}
+.pb-15 {
+    padding-bottom: 15px !important;
+}
+.pt-20 {
+    padding-top: 20px !important;
+}
+.pb-20 {
+    padding-bottom: 20px !important;
+}
+.pt-30 {
+    padding-top: 30px !important;
+}
+.pb-30 {
+    padding-bottom: 30px !important;
+}
+.pt-40 {
+    padding-top: 40px !important;
+}
+.pb-40 {
+    padding-bottom: 40px !important;
+}
+.pt-50 {
+    padding-top: 50px !important;
+}
+.pb-50 {
+    padding-bottom: 50px !important;
+}
+.pt-60 {
+    padding-top: 60px !important;
+}
+.pb-60 {
+    padding-bottom: 60px !important;
+}
+.pt-70 {
+    padding-top: 70px !important;
+}
+.pb-70 {
+    padding-bottom: 70px !important;
+}
+.pt-80 {
+    padding-top: 80px !important;
+}
+.pb-80 {
+    padding-bottom: 80px !important;
+}
+.pt-90 {
+    padding-top: 90px !important;
+}
+.pb-90 {
+    padding-bottom: 90px !important;
+}
+.pt-100 {
+    padding-top: 100px !important;
+}
+.pb-100 {
+    padding-bottom: 100px !important;
+}
+.pt-120 {
+    padding-top: 120px !important;
+}
+.pb-120 {
+    padding-bottom: 120px !important;
+}
+.pt-140 {
+    padding-top: 140px !important;
+}
+.pb-140 {
+    padding-bottom: 140px !important;
+}
+.pt-150 {
+    padding-top: 150px !important;
+}
+.pb-150 {
+    padding-bottom: 150px !important;
+}
+.pt-160 {
+    padding-top: 160px !important;
+}
+.pb-160 {
+    padding-bottom: 160px !important;
+}
+.mt-5 {
+    margin-top: 5px !important;
+}
+.mb-5 {
+    margin-bottom: 5px !important;
+}
+.mt-10 {
+    margin-top: 10px !important;
+}
+.mb-10 {
+    margin-bottom: 10px !important;
+}
+.mt-15 {
+    margin-top: 15px !important;
+}
+.mb-15 {
+    margin-bottom: 15px !important;
+}
+.mt-20 {
+    margin-top: 20px !important;
+}
+.mb-20 {
+    margin-bottom: 20px !important;
+}
+.mt-30 {
+    margin-top: 30px !important;
+}
+.mb-30 {
+    margin-bottom: 30px !important;
+}
+.mt-40 {
+    margin-top: 40px !important;
+}
+.mb-40 {
+    margin-bottom: 40px !important;
+}
+.mt-50 {
+    margin-top: 50px !important;
+}
+.mb-50 {
+    margin-bottom: 50px !important;
+}
+.mt-60 {
+    margin-top: 60px !important;
+}
+.mb-60 {
+    margin-bottom: 60px !important;
+}
+.mt-70 {
+    margin-top: 70px !important;
+}
+.mb-70 {
+    margin-bottom: 70px !important;
+}
+.mt-80 {
+    margin-top: 80px !important;
+}
+.mb-80 {
+    margin-bottom: 80px !important;
+}
+.mt-90 {
+    margin-top: 90px !important;
+}
+.mb-90 {
+    margin-bottom: 90px !important;
+}
+.mt-100 {
+    margin-top: 100px !important;
+}
+.mb-100 {
+    margin-bottom: 100px !important;
+}
+.mt-150 {
+    margin-top: 150px !important;
+}
+.mb-150 {
+    margin-bottom: 150px !important;
+}
+.mt-200 {
+    margin-top: 200px !important;
+}
+.mt-350 {
+    margin-top: 350px !important;
+}
+.mb-200 {
+    margin-bottom: 200px !important;
+}
+.not-mb {
+    margin-bottom: 0;
+}
+.bg-dark-grey {
+    background: #303030;
+}
+.bg-grey {
+    background: #fafafa;
+}
+.bg-rose {
+    background: #f93d66;
+}
+.bg-beige {
+    background: #f4f2ef;
+}
+.pd-r0 {
+    padding-right: 0 !important;
+}
+.pd-l0 {
+    padding-left: 0 !important;
+}
+/*End misc */
