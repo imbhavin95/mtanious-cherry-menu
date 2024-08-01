@@ -125,11 +125,13 @@
             <input type="password" class="form-control" name="confirm_password" id="confirm_password" tabindex="5" placeholder="Password again">
             <i class="fa fa-key"></i>
           </div>
-          <button type="submit" class="btn btn-default btn-block" tabindex="6">REGISTER NOW</button>
-        </div>
+            <div class="g-recaptcha" id="rcaptcha"  data-sitekey="6LdVIx0qAAAAAGirSHv8bZYsl1NC4nxNanR7S385"></div>
+            <input name="recaptcha_validate" type="hidden" id="recaptcha_validate" value="">
+              <button type="submit" class="btn btn-default btn-block" style="margin-top: 20px;" id="signupBtn" tabindex="6">REGISTER NOW</button>
+            </div>
       </form>
       <div class="footer-links row">
-        <div class="col-xs-6  "><a href="<?php echo base_url('Login'); ?>" style="color:white"><i class="fa fa-sign-in "></i> Login</a></div>
+        <div class="col-xs-6"><a href="<?php echo base_url('Login'); ?>" style="color:white"><i class="fa fa-sign-in "></i> Login</a></div>
       </div>
     </div>
 </body>
@@ -137,6 +139,7 @@
 <script type="text/javascript" src="assets/Backend/js/jquery.min.js"></script>
 <script type="text/javascript" src="assets/Backend/validation_jquery/js/jquery.validate.js"></script>
 <script src="assets/Backend/js/additional-methods.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
 $(document).ready(function(){
 
@@ -152,12 +155,18 @@ $(document).ready(function(){
     return this.optional(element) || /^([a-zA-Z0-9 ]+)$/.test(value);
 }, "Special characters are not allowed");
 
+  $("#signupBtn").on('click', function (e){
+      if(grecaptcha.getResponse() !== "") {
+          $("#recaptcha_validate").val('1');
+      }
+  })
 
   $.validator.addMethod('filesize', function (value, element, param) {
             return this.optional(element) || (element.files[0].size <= param)
         }, 'File size must be less than 2 MB');
     $('#signup').validate(
     {
+        ignore: [],
         rules:
         {
          "name":{required:true, maxlength:25,noHTML:true },
@@ -174,14 +183,16 @@ $(document).ready(function(){
                 "phone" : { required: true },
          "currency_code" :{ required :true },
          "password":{required:true, minlength : 6},
-         "confirm_password":{required:true, minlength : 6,equalTo : "#password"}
+         "confirm_password":{required:true, minlength : 6,equalTo : "#password"},
+            "recaptcha_validate" : {required: true}
         },
         messages:
         {
             "name":{required:"This field is required"},
             "email":{required:"This field is required",email:"Please enter a valid E-mail",remote: "The email is already registered."},
             "currency_code" : {required:"Currency code required"},
-            "password":{required:"This field is required"}
+            "password":{required:"This field is required"},
+            "recaptcha_validate": {required: "Please complete the reCAPTCHA"}
         },
         errorPlacement: function (error, element) {
             if(element.attr("name") == "image") {
@@ -190,7 +201,7 @@ $(document).ready(function(){
                 error.insertAfter(element);
             }
         },
-        submitHandler: function (form) 
+        submitHandler: function (form)
         {
             $('button[type="submit"]').attr('disabled', true);
             $('.alert').hide();
