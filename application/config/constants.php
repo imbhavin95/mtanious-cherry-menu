@@ -83,3 +83,31 @@ defined('EXIT_USER_INPUT')     OR define('EXIT_USER_INPUT', 7); // invalid user 
 defined('EXIT_DATABASE')       OR define('EXIT_DATABASE', 8); // database error
 defined('EXIT__AUTO_MIN')      OR define('EXIT__AUTO_MIN', 9); // lowest automatically-assigned error code
 defined('EXIT__AUTO_MAX')      OR define('EXIT__AUTO_MAX', 125); // highest automatically-assigned error code
+
+
+// Tables Name
+define('TBL_USERS', 'users');
+define('TBL_MENUS', 'menus');
+define('TBL_ITEMS', 'items');
+define('TBL_ITEM_DETAILS', 'item_details');
+define('TBL_TYPES', 'types');
+define('TBL_CATEGORIES', 'categories');
+define('TBL_CATEGORY_DETAILS', 'category_details');
+define('TBL_HELP_TOPICS', 'help_topics');
+define('TBL_ITEM_CLICKS', 'item_clicks');
+define('TBL_ITEM_IMAGES', 'item_images');
+define('TBL_SETTINGS', 'settings');
+define('TBL_FEEDBACKS', 'feedbacks');
+define('TBL_CLICKS_TIME', 'clicks_time');
+define('TBL_PACKAGES', 'packages');
+define('TBL_PACKAGE_DETAILS', 'package_details');
+define('TBL_CATEGORY_CLICKS', 'category_clicks');
+define('TBL_CATEGORY_CLICKS_TIME', 'category_clicks_time');
+define('TBL_ACTIVE_DEVICES', 'device_details');
+define('TBL_DELETE_CATEGORY', 'deleted_category');
+define('TBL_NEW_CATEGORY', 'new_categories');
+define('TBL_DELETE_ITEMS', 'deleted_items');
+define('TBL_NEW_ITEMS', 'new_items');
+define('TBL_ORDER', 'orders');
+define('TBL_ORDER_DETAILS', 'order_details');
+define('TBL_ANDROIDVERSION', 'android_app_version');

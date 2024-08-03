@@ -3,21 +3,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Welcome extends CI_Controller {
 
-	/**
-	 * Index Page for this controller.
-	 *
-	 * Maps to the following URL
-	 * 		http://example.com/index.php/welcome
-	 *	- or -
-	 * 		http://example.com/index.php/welcome/index
-	 *	- or -
-	 * Since this controller is set as the default controller in
-	 * config/routes.php, it's displayed at http://example.com/
-	 *
-	 * So any other public methods not prefixed with an underscore will
-	 * map to /index.php/welcome/<method_name>
-	 * @see https://codeigniter.com/user_guide/general/urls.html
-	 */
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('ItemsModel');
+        $this->load->model('UsersModel');
+        $this->load->model('SettingsModel');
+    }
 	public function index()
 	{
 		$this->load->view('welcome_message');
@@ -27,10 +19,140 @@ class Welcome extends CI_Controller {
 		$this->load->view('welcome_message_tony');
 	}
 
-	public function test()
-	{     $_SESSION['test']="HI";
-		$this->load->view('welcome_message');
+	public function restaurant_landing_page()
+	{
+        $urlVariables = urldecode($this->uri->segment('2'));
+
+        $urlVariablesArray = explode('-', $urlVariables);
+
+        $restaurantName = $urlVariablesArray[0];
+        // $restaurantName = 'Kibuncafe';
+        $restaurantSettings = $this->SettingsModel->get_settings_detail(['rest_name' =>  $restaurantName, 'is_deleted' => 0, 'is_active' => 1]);
+        if(!$restaurantSettings){
+            $this->load->view('restaurants/include/header');
+            $this->load->view('restaurants/error-404');
+            $this->load->view('restaurants/include/footer');
+        }else{
+            $restaurantId = $restaurantSettings['user_id'];
+
+            $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
+
+            $query = "SELECT * FROM `package_details` where DATE_ADD(created_at, INTERVAL 30 DAY)>=CURRENT_TIMESTAMP and `restaurant_id` = '".$restaurantId."' and status='activate' and package_id='3' and flag=1";
+            // $query = "SELECT * FROM `package_details` where `restaurant_id` = '".$restaurantId."' and status='activate' and flag=1";
+            $restaurantDetails = $this->UsersModel->run_manual_query($query);
+
+            if(!$restaurantDetails){
+                $query1="SELECT * FROM `package_details` where  `restaurant_id` = '".$restaurantId."' and status!='activate' and package_id!='3' or `restaurant_id` = '".$restaurantId."' and status='activate' and package_id!='3' and date(now())>date(end_date)  and flag=1";
+                $resultdata1=$this->UsersModel->run_manual_query($query1);
+
+                $query2 = "SELECT * FROM `package_details` where  `restaurant_id` = '".$restaurantId."' and status='activate' and package_id!='3' and date(now())<=date(end_date) and flag=1";
+                $resultdata2 = $this->UsersModel->run_manual_query($query2);
+
+                $query3 = "SELECT * FROM `package_details` where  `restaurant_id` = '".$restaurantId."' and status!='activate' and package_id='3'";
+                $resultdata3=$this->UsersModel->run_manual_query($query3);
+
+                $query4="SELECT * FROM `package_details` where  `restaurant_id` = '".$restaurantId."' and status='activate' and package_id='3' and DATE_ADD(created_at, INTERVAL 30 DAY)<CURRENT_TIMESTAMP";
+                $resultdata4=$this->UsersModel->run_manual_query($query4);
+
+
+                if($resultdata2)
+                {
+                    $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
+                    $data['rest_image'] = $userdata['image'];
+                    $data['restid'] = $restaurantId;
+                    $data['currency'] = $restaurantDetails['currency'];
+                    $data['item_data'] = @$this->ItemsModel->get_items_bycategory($restaurantId);
+                    $data['main_langid'] = @$urlVariablesArray[1];
+                    if(!$data['rest_image'] || !$data['restid'] || !$data['item_data']){
+                        $data['message']='Either Menu or Category or Items are disabled. Please check and come back';
+                        $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                        $this->load->view('restaurants/error-general', $data);
+                        $this->load->view('restaurants/include/footer');
+                    }else{
+                        $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                        $this->load->view('restaurants/index' ,['data' =>$data]);
+                        $this->load->view('restaurants/include/footer');
+                    }
+
+                }else
+                    if($resultdata1 && !$resultdata2)
+                    {
+                        $data['message']='Your Subscription has expired. Kindly contact our team to renew your plan.';
+                        $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                        $this->load->view('restaurants/error-general', $data);
+                        $this->load->view('restaurants/include/footer');
+                    }else
+                        if(($resultdata3 || $resultdata4) && !$resultdata2)
+                        {
+                            $data['message']='Your Free Plan has expired. kindly contact our team to subscribe to a plan.';
+                            $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                            $this->load->view('restaurants/error-general', $data);
+                            $this->load->view('restaurants/include/footer');
+                        }
+            }else{
+                $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name, image');
+                $data['rest_image'] = $userdata['logo'];
+                $data['restid'] = $restaurantId;
+                $data['currency'] = $restaurantDetails['currency'];
+                $data['item_data'] = $this->ItemsModel->get_items_bycategory($restaurantId);
+                $data['main_langid'] = @$urlVariablesArray[1];
+
+                if(!$data['rest_image'] || !$data['restid'] || !$data['item_data']){
+                    $data['message']='Either Menu or Category or Items are disabled. Please check and come back';
+                    $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                    $this->load->view('restaurants/error-general', $data);
+                    $this->load->view('restaurants/include/footer');
+                }else{
+                    $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                    $this->load->view('restaurants/index' , $data);
+                    $this->load->view('restaurants/include/footer');
+                }
+            }
+        }
+
 	}
+    // https://www.cherrymenu.com/login/item_detail?cid=48356&itid=75220&rid=24404&sid=1
+    public function item_detail()
+    {
+        $catid = $this->input->get('cid');
+        $restid = $this->input->get('rid');
+        $itid = $this->input->get('itid');
+        $sid = $this->input->get('sid');
+        $data['singleitem'] = $this->ItemsModel->single_item_detail($itid);
+        $data['restid'] = $restid;
+        $data['cat_id'] = $catid;
+        $data['sid']=$sid;
+        $userdata = $this->UsersModel->get_user_detail(['id' => $restid] , 'name,image');
+        $data['rest_name']=$userdata['name'];
+        $res = $this->SettingsModel->get_settings_detail(['user_id' =>  $restid, 'is_deleted' => 0, 'is_active' => 1]);
+        $data['currency']=$res['currency'];
+        $data['rest_image']=$res['logo'];
+        $data['sesurl']="https://www.cherrymenu.com/".$res['rest_name'];
+        $data['menu_name'] = $this->ItemsModel->get_menu_name($catid);
+        if(!$data['menu_name'] || !$userdata || !$data['singleitem']){
+            $this->load->view('restaurants/include/header', ['data' => $userdata]);
+            $this->load->view('restaurants/error-404');
+            $this->load->view('restaurants/include/footer');
+        }else{
+            $item_data2=$this->ItemsModel->get_items_bycat($catid);
+            $item_data=$item_data2['new'];
+            foreach ($item_data as $key => $value) {
+                if($value['id']==$itid){
+                    unset($item_data[$key]);
+                }
+            } $i=0;
+            foreach ($item_data as $key => $value) {
+                if($i>2){
+                    unset($item_data[$key]);
+                }
+                $i++;
+            }
+            $data['item_data']=$item_data;
+            $this->load->view('restaurants/include/header', ['data' => $userdata]);
+            $this->load->view('restaurants/product-detail' ,['data' =>$data]);
+            $this->load->view('restaurants/include/footer');
+        }
+    }
 
 	public function features()
 	{
