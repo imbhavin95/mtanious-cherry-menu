@@ -75,7 +75,7 @@
                 ?>
             </div>
             <div class="mid-content">
-                <img width="100" src="<?php echo $data['image'] ? 'https://www.cherrymenu.com/login/public/settings/logo/'.$data['image'] : base_url('img/gray-logo.svg'); ?>"/>
+                <img width="100" src="<?php echo $data['rest_image'] ? base_url().'/login/public/settings/logo/'.$data['rest_image'] : base_url('img/gray-logo.svg'); ?>"/>
             </div>
 <!--            <div class="right-content d-flex align-items-center gap-4">-->
 <!--                <a href="javascript:void(0);" class="font-24">-->

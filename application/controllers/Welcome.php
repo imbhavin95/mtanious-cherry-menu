@@ -26,7 +26,6 @@ class Welcome extends CI_Controller {
         $urlVariablesArray = explode('-', $urlVariables);
 
         $restaurantName = $urlVariablesArray[0];
-        // $restaurantName = 'Kibuncafe';
         $restaurantSettings = $this->SettingsModel->get_settings_detail(['rest_name' =>  $restaurantName, 'is_deleted' => 0, 'is_active' => 1]);
         if(!$restaurantSettings){
             $this->load->view('restaurants/include/header');
@@ -45,6 +44,7 @@ class Welcome extends CI_Controller {
                 $query1="SELECT * FROM `package_details` where  `restaurant_id` = '".$restaurantId."' and status!='activate' and package_id!='3' or `restaurant_id` = '".$restaurantId."' and status='activate' and package_id!='3' and date(now())>date(end_date)  and flag=1";
                 $resultdata1=$this->UsersModel->run_manual_query($query1);
 
+
                 $query2 = "SELECT * FROM `package_details` where  `restaurant_id` = '".$restaurantId."' and status='activate' and package_id!='3' and date(now())<=date(end_date) and flag=1";
                 $resultdata2 = $this->UsersModel->run_manual_query($query2);
 
@@ -58,18 +58,19 @@ class Welcome extends CI_Controller {
                 if($resultdata2)
                 {
                     $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
-                    $data['rest_image'] = $userdata['image'];
+                    $data['rest_image'] = $restaurantSettings['logo'];
                     $data['restid'] = $restaurantId;
-                    $data['currency'] = $restaurantDetails['currency'];
+                    $data['currency'] = $restaurantSettings['currency'];
                     $data['item_data'] = @$this->ItemsModel->get_items_bycategory($restaurantId);
                     $data['main_langid'] = @$urlVariablesArray[1];
+
                     if(!$data['rest_image'] || !$data['restid'] || !$data['item_data']){
                         $data['message']='Either Menu or Category or Items are disabled. Please check and come back';
-                        $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                        $this->load->view('restaurants/include/header', ['data' =>$data]);
                         $this->load->view('restaurants/error-general', $data);
                         $this->load->view('restaurants/include/footer');
                     }else{
-                        $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                        $this->load->view('restaurants/include/header', ['data' =>$data]);
                         $this->load->view('restaurants/index' ,['data' =>$data]);
                         $this->load->view('restaurants/include/footer');
                     }
@@ -78,32 +79,32 @@ class Welcome extends CI_Controller {
                     if($resultdata1 && !$resultdata2)
                     {
                         $data['message']='Your Subscription has expired. Kindly contact our team to renew your plan.';
-                        $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                        $this->load->view('restaurants/include/header', ['data' =>$data]);
                         $this->load->view('restaurants/error-general', $data);
                         $this->load->view('restaurants/include/footer');
                     }else
                         if(($resultdata3 || $resultdata4) && !$resultdata2)
                         {
                             $data['message']='Your Free Plan has expired. kindly contact our team to subscribe to a plan.';
-                            $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                            $this->load->view('restaurants/include/header', ['data' =>$data]);
                             $this->load->view('restaurants/error-general', $data);
                             $this->load->view('restaurants/include/footer');
                         }
             }else{
                 $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name, image');
-                $data['rest_image'] = $userdata['logo'];
+                $data['rest_image'] = $restaurantSettings['logo'];
                 $data['restid'] = $restaurantId;
-                $data['currency'] = $restaurantDetails['currency'];
+                $data['currency'] = $restaurantSettings['currency'];
                 $data['item_data'] = $this->ItemsModel->get_items_bycategory($restaurantId);
                 $data['main_langid'] = @$urlVariablesArray[1];
 
                 if(!$data['rest_image'] || !$data['restid'] || !$data['item_data']){
                     $data['message']='Either Menu or Category or Items are disabled. Please check and come back';
-                    $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                    $this->load->view('restaurants/include/header', ['data' =>$data]);
                     $this->load->view('restaurants/error-general', $data);
                     $this->load->view('restaurants/include/footer');
                 }else{
-                    $this->load->view('restaurants/include/header', ['data' => $userdata]);
+                    $this->load->view('restaurants/include/header', ['data' =>$data]);
                     $this->load->view('restaurants/index' , $data);
                     $this->load->view('restaurants/include/footer');
                 }
