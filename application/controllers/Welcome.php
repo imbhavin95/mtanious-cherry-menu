@@ -149,7 +149,7 @@ class Welcome extends CI_Controller {
                 $i++;
             }
             $data['item_data']=$item_data;
-            $this->load->view('restaurants/include/header', ['data' => $userdata]);
+            $this->load->view('restaurants/include/header', ['data' => $data]);
             $this->load->view('restaurants/product-detail' ,['data' =>$data]);
             $this->load->view('restaurants/include/footer');
         }

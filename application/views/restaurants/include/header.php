@@ -14,24 +14,24 @@
 
     <meta name="description" content="Discover the perfect blend of design and functionality with Ombe, a Coffee Shop Mobile App Template crafted with Bootstrap and enhanced with Progressive Web App (PWA) capabilities. Elevate your coffee shop's online presence with a seamless, responsive, and feature-rich template. Explore a modern design, user-friendly interface, and PWA technology for an immersive mobile experience. Brew success for your coffee shop effortlessly – Ombe is the ideal template to caffeinate your digital presence.">
 
-    <meta property="og:title" content="Ombe- Coffee Shop Mobile App Template (Bootstrap + PWA) | DexignZone">
-    <meta property="og:description" content="Discover the perfect blend of design and functionality with Ombe, a Coffee Shop Mobile App Template crafted with Bootstrap and enhanced with Progressive Web App (PWA) capabilities. Elevate your coffee shop's online presence with a seamless, responsive, and feature-rich template. Explore a modern design, user-friendly interface, and PWA technology for an immersive mobile experience. Brew success for your coffee shop effortlessly – Ombe is the ideal template to caffeinate your digital presence.">
+    <meta property="og:title" content="">
+    <meta property="og:description" content="">
 
-    <meta property="og:image" content="https://ombe.dexignzone.com/xhtml/social-image.png">
+    <meta property="og:image" content="">
 
     <meta name="format-detection" content="telephone=no">
 
-    <meta name="twitter:title" content="Ombe- Coffee Shop Mobile App Template (Bootstrap + PWA) | DexignZone">
-    <meta name="twitter:description" content="Discover the perfect blend of design and functionality with Ombe, a Coffee Shop Mobile App Template crafted with Bootstrap and enhanced with Progressive Web App (PWA) capabilities. Elevate your coffee shop's online presence with a seamless, responsive, and feature-rich template. Explore a modern design, user-friendly interface, and PWA technology for an immersive mobile experience. Brew success for your coffee shop effortlessly – Ombe is the ideal template to caffeinate your digital presence.">
+    <meta name="twitter:title" content="">
+    <meta name="twitter:description" content="">
 
-    <meta name="twitter:image" content="https://ombe.dexignzone.com/xhtml/social-image.png">
-    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="">
+    <meta name="twitter:card" content="">
 
     <!-- Mobile Specific -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, minimal-ui, viewport-fit=cover">
 
     <!-- Favicons Icon -->
-    <link rel="shortcut icon" type="image/x-icon" href="assets/images/app-logo/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="<?php echo base_url('img/faviconcherry.jpg') ?>">
 
     <!-- Global CSS -->
     <link rel="stylesheet" href="<?= base_url('frontend/assets/vendor/bootstrap-select/dist/css/bootstrap-select.min.css') ?>">
@@ -77,11 +77,12 @@
             <div class="mid-content">
                 <img width="100" src="<?php echo $data['rest_image'] ? base_url().'/login/public/settings/logo/'.$data['rest_image'] : base_url('img/gray-logo.svg'); ?>"/>
             </div>
-<!--            <div class="right-content d-flex align-items-center gap-4">-->
+            <div class="right-content d-flex align-items-center gap-4">
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <!--                <a href="javascript:void(0);" class="font-24">-->
 <!--                    <i class="font-w700 feather icon-more-vertical-"></i>-->
 <!--                </a>-->
-<!--            </div>-->
+            </div>
         </div>
     </header>
     <!-- Header -->
