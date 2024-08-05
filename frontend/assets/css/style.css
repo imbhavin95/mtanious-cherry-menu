@@ -9688,6 +9688,7 @@ svg.text-dark path {
   overflow: hidden; }
   .dz-media img,
   .dz-post-media img {
+    border-radius: 20px;
     max-width: 100%;
     height: auto;
     width: 100%; }
@@ -16960,6 +16961,19 @@ select.form-select {
 .swiper .swiper-notification {
   display: none; }
 
+.swiper-thumbs{
+  position: fixed;
+  z-index: 99;
+  max-width: 600px;
+  background: #fff;
+  top: 80px;
+  right: 0;
+  left: 0;
+}
+.mySwiper2 .swiper-wrapper{
+  margin-top: 40px;
+}
+
 .dz-swiper {
   margin-left: -15px !important;
   margin-right: -15px !important;
@@ -16970,6 +16984,10 @@ select.form-select {
   margin-right: -15px !important; }
   .swiper-center .swiper-slide {
     width: 300px; }
+  .product-detail-swiper .swiper-slide .dz-media{
+    margin-top: 80px;
+    padding: 0 20px;
+  }
     .swiper-center .swiper-slide:first-child {
       margin-left: 15px; }
 
@@ -18642,6 +18660,9 @@ label input {
 .dz-product-preview {
   position: relative;
   overflow: hidden; }
+.product-detail-swiper{
+  background: white;
+}
   .dz-product-preview .product-detail-swiper .swiper-wrapper .swiper-slide {
     opacity: 0 !important; }
     .dz-product-preview .product-detail-swiper .swiper-wrapper .swiper-slide.swiper-slide-active {
@@ -18653,7 +18674,7 @@ label input {
 
 .dz-product-detail {
   padding: 40px 20px 24px;
-  margin-top: -40px;
+  margin-top: 0px;
   background-color: var(--bg-white);
   border-radius: 35px 35px 0px 0px;
   position: relative;
@@ -18693,6 +18714,8 @@ label input {
     gap: 30px; }
     .dz-product-detail .item-wrapper .dz-name {
       font-weight: 500; }
+    .dz-product-detail .item-wrapper .description {
+  margin-bottom: 50px; }
     .dz-product-detail .item-wrapper .dz-range-slider {
       padding: 0 20px;
       margin-bottom: 50px; }

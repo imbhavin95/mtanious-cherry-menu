@@ -3,8 +3,9 @@
     <div class="dz-product-preview bg-primary">
         <div class="swiper product-detail-swiper">
             <div class="swiper-wrapper">
-                <?php foreach ($data['singleitem']['images']['new'] as $image) {
-                    if($image) {
+                <?php
+                    if(count($data['singleitem']['images']['new']) > 0){
+                        foreach ($data['singleitem']['images']['new'] as $image) {
                             ?>
                                 <div class="swiper-slide">
                                     <div class="dz-media">
@@ -13,15 +14,15 @@
                                     </div>
                                 </div>
                             <?php
+                        }
                     }else{
                         ?>
-                            <div class="swiper-slide">
-                                <div class="dz-media">
-                                    <img src="<?php echo base_url('frontend/assets/images/no-image.jpg'); ?>" alt="">
-                                </div>
-                            </div>
-                        <?php
-                    }
+                    <div class="swiper-slide">
+                        <div class="dz-media">
+                            <img src="<?php echo base_url('frontend/assets/images/no-image.jpg'); ?>" alt="">
+                        </div>
+                    </div>
+                    <?php
                 }
 
                 ?>
@@ -36,7 +37,7 @@
                 <h4 class="title"><?php echo $item['arabian_title']; ?></h4>
                 <h4 class="title"><?php echo $item['title']; ?></h4>
             </div>
-            <div class="dz-item-rating">4.5</div>
+<!--            <div class="dz-item-rating">4.5</div>-->
             <div class="item-wrapper">
                 <div class="dz-meta-items">
                     <div class="dz-price flex-1">

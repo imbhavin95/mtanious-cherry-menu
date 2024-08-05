@@ -7,8 +7,9 @@
     <!-- Meta -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="author" content="DexignZone">
+    <meta name="author" content="CherryMenu">
     <meta name="robots" content="index, follow">
+    <link rel="manifest" id="my-manifest-cherry-menu">
 
     <meta name="keywords" content="android, ios, mobile, mobile template, mobile app, ui kit, dark layout, app, delivery, ecommerce, material design, mobile, mobile web, order, phonegap, pwa, store, web app, Ombe, coffee app, coffee template, coffee shop, mobile UI, coffee design, app template, responsive design, coffee showcase, style app, trendy app, modern UI, technology, User-Friendly Interface, Coffee Shop App, PWA (Progressive Web App), Mobile Ordering, Coffee Experience, Digital Menu, Innovative Technology, App Development, Coffee Experience, cafe, bootatrap, Bootstrap Framework, UI/UX Design, Coffee Shop Technology, Online Presence, Coffee Shop Website, Cafe Template, Mobile App Design, Web Application, Digital Presence, ">
 
@@ -65,7 +66,8 @@
     <header class="header header-fixed">
         <div class="header-content">
             <div class="left-content">
-                <?php if($this->uri->segment(1) !== 'r'){
+                <?php
+                if($this->uri->segment(2) == 'item_detail'){
                   ?>
                     <a href="javascript:void(0);" class="back-btn">
                         <i class="feather icon-arrow-left"></i>
@@ -75,7 +77,7 @@
                 ?>
             </div>
             <div class="mid-content">
-                <img width="100" src="<?php echo $data['rest_image'] ? base_url().'/login/public/settings/logo/'.$data['rest_image'] : base_url('img/gray-logo.svg'); ?>"/>
+                <a href="<?php echo $this->uri->segment(2) == 'item_detail' ? base_url('/r/'.$data['name']) : '#'; ?>"><img width="100" src="<?php echo $data['rest_image'] ? base_url().'/login/public/settings/logo/'.$data['rest_image'] : base_url('img/gray-logo.svg'); ?>"/></a>
             </div>
             <div class="right-content d-flex align-items-center gap-4">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

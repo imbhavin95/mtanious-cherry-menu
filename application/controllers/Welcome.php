@@ -124,7 +124,8 @@ class Welcome extends CI_Controller {
         $data['cat_id'] = $catid;
         $data['sid']=$sid;
         $userdata = $this->UsersModel->get_user_detail(['id' => $restid] , 'name,image');
-        $data['rest_name']=$userdata['name'];
+        $data['rest_name'] = $userdata['name'];
+        $data['name'] = $userdata['name'];
         $res = $this->SettingsModel->get_settings_detail(['user_id' =>  $restid, 'is_deleted' => 0, 'is_active' => 1]);
         $data['currency']=$res['currency'];
         $data['rest_image']=$res['logo'];

@@ -1,0 +1,15 @@
+{
+  "background_color": "#f93d66",
+  "description": "Build the best digital menu for your restaurant in UAE. CherryMenu offers cost-effective restaurant management software & electronic menu application. Call now!",
+  "display": "standalone",
+  "icons": [
+	{
+	  "src": "frontend/assets/images/app-logo/pwa150.png",
+	  "sizes": "150x150",
+	  "type": "image/png"
+	}
+  ],
+  "name": "CherryMenu Offers Digital Menu Restaurant Solutions in UAE",
+  "short_name": "CherryMenu",
+  "start_url": "/r/KibunCafe"
+}
