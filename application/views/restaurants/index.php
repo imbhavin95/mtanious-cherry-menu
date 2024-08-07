@@ -38,25 +38,25 @@
                                             <li>
                                                 <div class="dz-card list">
                                                     <div class="dz-media">
+                                                        <?php
+                                                        $itemlink = base_url("/r/item_detail?cid=" . $subItem["category_id"] . "&itid=" . $subItem["id"] . "&rid=" . $data['restid'] . "&sid=1");
+                                                        ?>
                                                         <?php $image = "https://www.cherrymenu.com/login/public/restaurants/" . $data['restid'] . "/items/" . $subItem['id'] . "/thumbnail/" . $subItem['thumbnail']; ?>
-                                                        <a href="javascript:void(0)">
+                                                        <a href="<?php echo $itemlink ?>">
                                                             <img src="<?php echo $subItem['thumbnail'] ? $image : base_url('frontend/assets/images/no-image.jpg'); ?>"></a>
-                                                        <div class="dz-rating"><i class="fa fa-star"></i> 3.8</div>
+<!--                                                        <div class="dz-rating"><i class="fa fa-star"></i> 3.8</div>-->
                                                     </div>
                                                     <div class="dz-content">
                                                         <div class="dz-head">
                                                             <h6 class="title"><a
-                                                                        href="javascript:void(0)"><?php echo $subItem['arabian_title']; ?></a>
+                                                                        href="<?php echo $itemlink ?>"><?php echo $subItem['arabian_title']; ?></a>
                                                             </h6>
                                                             <h6 class="title"><a
-                                                                        href="javascript:void(0)"><?php echo $subItem['title']; ?></a>
+                                                                        href="<?php echo $itemlink ?>"><?php echo $subItem['title']; ?></a>
                                                             </h6>
                                                         </div>
                                                         <ul class="dz-meta">
                                                             <li class="dz-price flex-1"><?php echo 'AED ' . $subItem['price'] ?></li>
-                                                            <?php
-                                                            $itemlink = base_url("/item_detail?cid=" . $subItem["category_id"] . "&itid=" . $subItem["id"] . "&rid=" . $data['restid'] . "&sid=1");
-                                                            ?>
                                                             <li>
                                                                 <a href="<?php echo $itemlink; ?>"
                                                                    class=" btn rounded-xl dz-buy-btn">

@@ -17,12 +17,12 @@
 
 <div class="menubar-area footer-fixed">
     <div class="toolbar-inner menubar-nav justify-content-center">
-        <a href="<?php echo $this->uri->segment(2) == 'item_detail' ? base_url('/r/'.$data['name']) : '#'; ?>" class="nav-link active">
+        <a href="<?php echo $this->uri->segment(2) == 'item_detail' || $this->uri->segment(1) == 'restaurant' ? base_url('/r/'.$data['name']) : '#'; ?>" class="nav-link <?php echo $this->uri->segment(1) == 'r' && $this->uri->segment(2) !== 'item_detail' ? 'active' : ''; ?>">
             <i class="fi fi-rr-home"></i>
         </a>
-<!--        <a href="#" class="nav-link">-->
-<!--            <i class="fi fi-rr-note"></i>-->
-<!--        </a>-->
+        <a href="<?php echo base_url('/restaurant/review?rid='.$data['restid']) ?>" class="nav-link <?php echo $this->uri->segment(1) == 'review' ? 'active' : ''; ?>">
+            <i class="fi fi-rr-note"></i>
+        </a>
     </div>
 </div>
 
@@ -88,6 +88,12 @@ function current_url_custom()
     var link = document.createElement('Link');
     link.rel = "manifest";
     link.setAttribute('href', 'data:application/json;charset=8' + stringManifest)
+
+
+    $(document).on('change', '.rating-star', function (){
+        let val = $(this).val();
+        $("#ratingText").html(val + '.0');
+    });
 </script>
 </body>
 </html>

@@ -67,9 +67,9 @@
         <div class="header-content">
             <div class="left-content">
                 <?php
-                if($this->uri->segment(2) == 'item_detail'){
+                if($this->uri->segment(2) == 'item_detail' || $this->uri->segment(1) == 'restaurant'){
                   ?>
-                    <a href="javascript:void(0);" class="back-btn">
+                    <a href="<?php echo base_url('/r/'.$data['name']); ?>" class="back-btn">
                         <i class="feather icon-arrow-left"></i>
                     </a>
                 <?php
