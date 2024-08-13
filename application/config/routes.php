@@ -58,7 +58,15 @@ $route['PrivacyPolicy'] = 'welcome/PrivacyPolicy';
 $route['terms_of_services'] = 'welcome/terms_of_services';
 $route['tony_test'] = 'welcome/tony_test';
 $route['r/item_detail'] = 'welcome/item_detail';
-$route['r/(:any)'] = 'welcome/restaurant_landing_page';
 $route['restaurant/review'] = 'welcome/review';
 $route['submit-review'] = 'welcome/submitReview';
 $route['translate_uri_dashes'] = FALSE;
+$route['(:any)'] = 'welcome/restaurant_landing_page';
+
+/**
+ * API Routes
+ */
+
+$route['api/expiring-subscription'] = 'api/expiring_subscription';
+$route['api/admin/expiring-subscription'] = 'api/admin_expiring_subscription';
+$route['api/admin/expired-subscription'] = 'api/admin_expired_subscription';
