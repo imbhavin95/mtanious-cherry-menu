@@ -54,7 +54,7 @@ function current_url_custom()
     self.addEventListener('install', (e) => {
         e.waitUntil(
             caches.open('app-store').then((cache) => cache.addAll([
-                '/r/kibunCafe'
+                '/kibunCafe'
             ])),
         );
     });
@@ -93,6 +93,32 @@ function current_url_custom()
     $(document).on('change', '.rating-star', function (){
         let val = $(this).val();
         $("#ratingText").html(val + '.0');
+    });
+
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register("<?php echo base_url('service-worker.js'); ?>").then(registration => {
+                console.log('ServiceWorker registration successful with scope: ', registration.scope);
+            }, err => {
+                console.log('ServiceWorker registration failed: ', err);
+            });
+        });
+    }
+
+    self.addEventListener('fetch', event => {
+        event.respondWith(
+            caches.open(CACHE_NAME).then(cache => {
+                return cache.match(event.request).then(response => {
+                    const fetchPromise = fetch(event.request).then(networkResponse => {
+                        if (networkResponse) {
+                            cache.put(event.request, networkResponse.clone());
+                        }
+                        return networkResponse;
+                    });
+                    return response || fetchPromise;
+                });
+            })
+        );
     });
 </script>
 </body>

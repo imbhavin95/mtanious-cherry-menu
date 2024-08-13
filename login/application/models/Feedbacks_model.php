@@ -37,7 +37,7 @@ class Feedbacks_model extends MY_Model
         $endDate = $this->input->get('endDate');
         $this->db->select('f.*');
         $this->db->join(TBL_USERS . ' as ru', 'f.restaurant_id=ru.id', 'left');
-        $this->db->join(TBL_USERS . ' as u', 'f.staff_id=u.id', 'left');
+        // $this->db->join(TBL_USERS . ' as u', 'f.staff_id=u.id', 'left');
         if (!empty($keyword['value'])) {
             $this->db->where('(f.feedback LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') . ' OR f.staff_name LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') . ' OR f.customer_name LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') .  ' OR f.stars LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') .' OR f.created_at LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') . ')');
         }
@@ -46,7 +46,7 @@ class Feedbacks_model extends MY_Model
             $this->db->where('f.created_at >= ',date('Y-m-d', strtotime($startDate))); 
             $this->db->where('f.created_at <=',date('Y-m-d', strtotime($endDate)));
         }
-        $this->db->where(['f.restaurant_id' => $this->session->userdata('login_user')['id'],'f.is_deleted' => 0,'ru.is_deleted' => 0,'u.is_deleted' => 0]);
+        $this->db->where(['f.restaurant_id' => $this->session->userdata('login_user')['id'],'f.is_deleted' => 0,'ru.is_deleted' => 0]);
         $this->db->order_by($columns[$this->input->get('order')[0]['column']], $this->input->get('order')[0]['dir']);
         if ($type == 'result') {
             $this->db->limit($this->input->get('length'), $this->input->get('start'));

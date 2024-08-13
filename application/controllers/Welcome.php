@@ -25,7 +25,7 @@ class Welcome extends CI_Controller
     public function restaurant_landing_page()
     {
 //        $this->load->view('welcome_message');
-        $urlVariables = urldecode($this->uri->segment('2'));
+        $urlVariables = urldecode($this->uri->segment('1'));
 
         $urlVariablesArray = explode('-', $urlVariables);
 
