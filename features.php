@@ -607,7 +607,7 @@ ul#feature-submenu li.active a {
                             </div>
                             <div class="col-md-6 col-sm-12 eduright">
                                  <div class="right-part-timeline">
-                                     <h2>Contactless menu <span id="newtag">New</span></h2>   
+                                     <h2>Contactless menu <span id="newtag">New</span></h2>
                                      <p>Stay within the recommendations to fight COVID-19 with this new feature, your customers doesn't need to touch or browse any menus, all they have to do is scan a QR code or visit a link that will display your digital menu with the photos, info, up-selling items..etc, the contactless menu can be easily updated in a min from your control panel and can be opened using any device or tablet.</p>
                                  </div> 
                             </div>

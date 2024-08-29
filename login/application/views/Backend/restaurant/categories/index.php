@@ -129,9 +129,9 @@ var categories;
                         render: function (data, type, full, meta) {
                             var img = '';
                             if (data != null) {
-                                img = '<a class="fancybox" href="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'); ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'); ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
+                                img = '<a class="fancybox" href="<?php echo "https://www.cherrymenu.com/login/". RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'; ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo "https://www.cherrymenu.com/login/".RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'; ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             } else {
-                                img = '<a class="fancybox" href="<?php echo base_url(DEFAULT_IMG)?>" data-fancybox-group="gallery" ><img src="<?php echo base_url(DEFAULT_IMG) ?>" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
+                                img = '<a class="fancybox" href="<?php echo "https://www.cherrymenu.com/login/".DEFAULT_IMG?>" data-fancybox-group="gallery" ><img src="<?php echo base_url(DEFAULT_IMG) ?>" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             }
                             return img;
                         }
@@ -143,7 +143,7 @@ var categories;
                         render: function (data, type, full, meta) {
                             var img = '';
                             if (data != null) {
-                                img = '<a class="fancybox" href="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'); ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'); ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
+                                img = '<a class="fancybox" href="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'); ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo "https://www.cherrymenu.com/login/".RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'; ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             } else {
                                 img = '<a class="fancybox" href="<?php echo base_url(DEFAULT_IMG)?>" data-fancybox-group="gallery" ><img src="<?php echo base_url(DEFAULT_IMG) ?>" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             }

@@ -1,17 +1,4 @@
-<?php
-$segments = explode('/', trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/'));
-// echo "<pre>";
-//  print_r($segments);
-$arrContextOptions=array(
-    "ssl"=>array(
-        "verify_peer"=>false,
-        "verify_peer_name"=>false,
-    ),
-);
-if(isset($segments[0]) && !empty($segments[0])){
-    print file_get_contents('https://www.cherrymenu.com/login/v1/'.$segments[0].'',false,stream_context_create($arrContextOptions));
-}else{
-    ?>  <!DOCTYPE html>
+<!DOCTYPE html>
     <html lang="en" >
     <head>
         <!-- Metas -->
@@ -342,12 +329,12 @@ if(isset($segments[0]) && !empty($segments[0])){
                         </div>
                         <ul>
                             <li><a class="scroll" href="#about">about</a></li>
-                            <li><a class="scroll" href="https://www.cherrymenu.com/features.php">features</a></li>
+                            <li><a class="scroll" href="<?php echo base_url('/features'); ?>">features</a></li>
                             <!-- <li><a class="scroll" href="#gallery">gallery</a></li> -->
-                            <li><a class="scroll" href="https://www.cherrymenu.com/pricing.php">pricing</a></li>
+                            <li><a class="scroll" href="<?php echo base_url('pricing'); ?>">pricing</a></li>
                             <li><a class="scroll" href="#faq">faq</a></li>
-                            <li><a class="but login scroll" href="https://www.cherrymenu.com/login">login<i class="icon-lock"></i></a></li>
-                            <li><a class="scroll" href="https://www.cherrymenu.com/contact.php">contact us</a>
+                            <li><a class="but login scroll" href="<?php echo base_url('login'); ?>">login<i class="icon-lock"></i></a></li>
+                            <li><a class="scroll" href="<?php echo base_url('contact'); ?>">contact us</a>
                             </li>
                         </ul>
                     </nav>
@@ -363,16 +350,19 @@ if(isset($segments[0]) && !empty($segments[0])){
                         <div class="col-sm-10 col-sm-offset-1 text-center">
                             <div class="block-teaser">
                                 <h1>
-                                    A Contactless QR based and Digital <br>Menu for Restaurants and Cafes
+                                    A Contactless QR-Based and Digital <br>Menu for Restaurants and Cafes
                                 </h1>
-                                <h4 class="but medium mt-20 start-price"  >Start with Free-For-Life acount</h4>
+                                <h4 class="but medium mt-20 start-price"  >Start with a Free-For-Life Account</h4>
+<!--                                <p class="lead">-->
+<!--                                    Customise and easily update your Restaurant / Cafe Contactless QR Digital menu for Web, Android tablets and iPad-->
+<!--                                </p>-->
                                 <p class="lead">
-                                    Customise and easily update your Restaurant / Cafe Contactless QR Digital menu for Web, Android tablets and iPad
+                                    Flexible and adaptable for all devices, delivering an app-like experience instantly.
                                 </p>
                                 <!-- <p><b>Season's discount,<b> 50% OFF</b> on your first year subscription</b></p> -->
-                                <a class="but medium mt-20" href="https://www.cherrymenu.com/login/registration"> Sign up for free</a>
+                                <a class="but medium mt-20" href="<?php echo base_url('login/registration'); ?>"> Sign up for free</a>
 
-                                <a class="but medium mt-20" id="btn-explore" href="https://www.cherrymenu.com/features.php">Explore features</a>
+                                <a class="but medium mt-20" id="btn-explore" href="<?php echo base_url('features'); ?>">Explore features</a>
 
                                 <p class="proud-emirati">
                                     <img src="<?php echo base_url();?>/img/Emirati.png" alt="A proud Emirati product">&nbsp;&nbsp; A proud Emirati product, Coded with passion in Dubai.
@@ -386,7 +376,7 @@ if(isset($segments[0]) && !empty($segments[0])){
                         <div class="col-md-8 col-md-offset-2 ">
                             <div class="block-media mt-60 page">
                                 <div class="block-shot">
-                                    <img src="<?php echo base_url();?>/img/cherry-menu-main.png" alt="cherrymenu main menu">
+                                    <img src="<?php echo base_url();?>/img/homescreen/1/cherry-menu-main.png" alt="cherrymenu main menu">
                                 </div>
 
 
@@ -460,20 +450,40 @@ if(isset($segments[0]) && !empty($segments[0])){
                                 <b style="font-size: 17px;">
                                     We've added a contactless, QR Based menu as new features that comes as standard with all accounts to help you server your customers at these time of the COVID-19 Pandemic, A copy of the menu you upload to your system will be available on a URL that is automatically linked to a QR Code, this allows you to fully go digital and contactless within you restaurant or cafe and, you can send short-links via Whatsapp or any social media of these menus, all this while keeping the advanced features that Cherry Menu brings you like adding images, updates in less than a min, up-selling items...etc
                                 </b><br/><br/>
-                                <!-- CherryMenu is an innovative solution which is easy to use and customizable according to the requirements. A Digital restaurant menu will allow your restaurant or cafe to present menu in an attractive and interactive manner. --> CherryMenu offers an innovative, professional, and simple Digital Menu solution for your restaurant. We build applications that can cater to your unique requirements. A digital restaurant menu will allow your restaurant or café to present the menu in an appealing way and interactive manner.<br/>
+                                <!-- CherryMenu is an innovative solution which is easy to use and customizable according to the requirements. A Digital restaurant menu will allow your restaurant or cafe to present menu in an attractive and interactive manner. -->
+                                Cherry Menu offers an innovative, professional, and simple digital menu solution tailored to meet the needs of modern restaurants and cafes. With our advanced PWA technology, your digital menu can be accessed seamlessly across all devices—whether on tablets, phones, or desktops. Our solution provides a consistent, app-like experience without the hassle of native apps. Real-time updates, multilingual support, and customized branding ensure that your customers always have the best dining experience.<br/>
+                            </p>
+
                                 <!-- Our mission at CherryMenu is to create more interactive and engaging customer experiences that will generate higher revenues and increase margins. The integration of the CherryMenu application will enhance server and guest satisfaction immediately. -->
-                                At CherryMenu, our main aim is to create more interactive and engaging customer experiences that will generate higher revenues and increase margins. The integration of the CherryMenu application will enhance server and guest satisfaction immediately. With the best restaurant menu, and apps, you will be able to manage, report, and grow your business with ease.</p>
+<!--                                At CherryMenu, our main aim is to create more interactive and engaging customer experiences that will generate higher revenues and increase margins. The integration of the CherryMenu application will enhance server and guest satisfaction immediately. With the best restaurant menu, and apps, you will be able to manage, report, and grow your business with ease.</p>-->
 
-                            <p style="text-align: left;"><b>What makes us unrivaled?</b><br>
-                                We are committed to providing you with flexible and easy to use technologies. We are always striving to adopt new trends. With our restaurant management applications and software, you will be able to provide your guests with some happy moments. </p>
+<p class="lead" style="text-align: left;">   Unlike traditional systems that require extensive maintenance and frequent updates, Cherry Menu’s PWA technology eliminates the need for constant syncing and app downloads. This means you can focus on running your business while our platform keeps your menu updated across all channels. With Cherry Menu, you have the power to instantly reflect changes across multiple menus and locations, providing flexibility and control. Whether you want to manage different menus for breakfast, lunch, and dinner or showcase special event offerings, our platform is designed to cater to your unique needs. Join the digital revolution with Cherry Menu and enhance the way you interact with your customers.</p>
 
-                            <p style="text-align: left;"><b>Key Benefits of our Digital Menu Boards and POS System for your restaurant:</b><br></p>
-                            <ul style="text-align: left; padding-left: 15px; list-style-type: initial;">
-                                <li>Easily update the digital menu boards with new content</li>
-                                <li>Catch most of your customers’ attention with highlighted promotions and up sell</li>
-                                <li>Reduce the perceived wait times</li>
-                                <li>Ensure long-term cost savings</li>
-                            </ul>
+<!--                            <p style="text-align: left;"><b>What makes us unrivaled?</b><br>-->
+<!--                                We are committed to providing you with flexible and easy to use technologies. We are always striving to adopt new trends. With our restaurant management applications and software, you will be able to provide your guests with some happy moments. </p>-->
+
+<!--                            <p style="text-align: left;"><b>Key Benefits of our Digital Menu Boards and POS System for your restaurant:</b><br></p>-->
+<!--                            <p style="text-align: left;"><b>Key Features</b><br></p>-->
+
+<!--                            <ol style="text-align: left; padding-left: 15px; list-style-type: number;">-->
+<!--                                <li>Easily update the digital menu boards with new content</li>-->
+<!--                                <li>Catch most of your customers’ attention with highlighted promotions and up sell</li>-->
+<!--                                <li>Reduce the perceived wait times</li>-->
+<!--                                <li>Ensure long-term cost savings</li>-->
+<!--                                <li><strong>Contactless Menu:</strong> Utilize QR codes, web links, and digital menus for a seamless dining experience.</li>-->
+<!--                                <li><strong>Centralized Dashboard:</strong> Update your menu instantly across multiple locations and devices from one central point.</li>-->
+<!--                                <li><strong>Device Compatibility:</strong> Works on all devices, including Android, iOS, and web browsers, using advanced technologies that mimic mobile app experiences.</li>-->
+<!--                                <li><strong>Mobile App Experience:</strong> Installable on any device, providing a seamless mobile app-like experience without the need for traditional app limitations.</li>-->
+<!--                                <li><strong>Multilingual Support:</strong> Available in both Arabic and English, catering to a diverse customer base.</li>-->
+<!--                                <li><strong>Multiple Menus:</strong> Create separate menus for different times of the day, special events, or business models (e.g., breakfast, lunch, catering).</li>-->
+<!--                                <li><strong>Food Features:</strong> Include details like allergies, taste, spiciness, calories, preparation time, and descriptions in two languages.</li>-->
+<!--                                <li><strong>Categories:</strong> Organize food items into various categories for easy navigation.</li>-->
+<!--                                <li><strong>Media Galleries:</strong> Add photos and videos to showcase menu items in the best possible light.</li>-->
+<!--                                <li><strong>Custom Branding:</strong> Customize your menus with your restaurant’s logo and branding.</li>-->
+<!--                                <li><strong>Digital Feedback Form:</strong> Collect valuable customer feedback digitally through the menu interface.</li>-->
+<!--                                <li><strong>COMING SOON - Cherry AI Butler:</strong> An AI-based chat feature that interacts with customers, recommends dishes, advises on preparation times, and explains ingredients.</li>-->
+<!--                                <li><strong>COMING SOON - Self Order:</strong> Enable customers to send their orders directly to the kitchen, enhancing efficiency and service speed.</li>-->
+<!--                            </ol>-->
                         </div>
                     </div>
                 </div>
@@ -495,7 +505,7 @@ if(isset($segments[0]) && !empty($segments[0])){
                         <!-- <div class="block-shot"> -->
                         <div >
 
-                            <img src="<?php echo base_url();?>/img/cherrymenu-screens3.png" alt="cherrymenu screens">
+                            <img src="<?php echo base_url();?>/img/homescreen/1/cherrymenu-screens3.png" alt="cherrymenu screens">
                             <!--   <img src="<?php echo base_url();?>/img/cherrymenu-screens_1.png" alt="">
                         <img src="<?php echo base_url();?>/img/cherrymenu-screens_2.png" alt=""> -->
                         </div>
@@ -504,25 +514,21 @@ if(isset($segments[0]) && !empty($segments[0])){
                         <h3 class="title">Main Features
                         </h3>
                         <ul class="features-list">
-                            <li>Contactless menu <span id="newtag">New</span></li>
-                            <li>Self order </li>
-                            <li>Multiple language: Arabic and English</li>
-
-                            <li class="dropdown">iPad
-
-                            </li>
-                            <li>Android</li>
-                            <li>Less than a minute to update items</li>
-                            <li>Analytics and reports</li>
-                            <li>Multi user</li>
-                            <li>Items gallery: photos and videos</li>
-                            <li>Offline, you don’t need internet to operate</li>
-                            <li>Item features and description</li>
-                            <li>Digital feedback form </li>
-                            <li>Multiple ways to categories menus and items</li>
-                            <li>Customization: your logo and background </li>
+                            <li>Contactless Menu</li>
+                            <li>Centralized Dashboard</li>
+                            <li>Device Compatibility</li>
+                            <li class="dropdown">Mobile App Experience</li>
+                            <li>Multilingual Support</li>
+                            <li>Multiple Menus</li>
+                            <li>Food Features</li>
+                            <li>Categories</li>
+                            <li>Media Galleries</li>
+                            <li>Custom Branding</li>
+                            <li>Digital Feedback Form</li>
+                            <li>COMING SOON - Cherry AI Butler</li>
+                            <li>COMING SOON - Self Order</li>
                         </ul>
-                        <a class="but mauve mt-20 scroll" href="https://www.cherrymenu.com/features.php">Explore features</a>
+                        <a class="but mauve mt-20 scroll" href="<?php echo base_url('features'); ?>">Explore features</a>
                     </div>
                 </div>
                 <!--End row-->
@@ -538,12 +544,12 @@ if(isset($segments[0]) && !empty($segments[0])){
             <div class="container">
                 <!--Row-->
                 <div class="row">
-                    <div class="col-md-5 col-md-offset-1">
-                        <h2 class="title light h2-title">Start your 30 day free trial</h2>
+                    <div class="col-md-6 col-md-offset-1">
+                        <h2 class="title light h2-title">Start Your 30-Day Free Trial Today!</h2>
                     </div>
-                    <div class="col-md-6 text-center">
+                    <div class="col-md-5 text-center">
                         <div class="form">
-                            <form method="post" class="trial-form" action="https://www.cherrymenu.com/login/registration">
+                            <form method="post" class="trial-form" action="<?php echo base_url('login/registration'); ?>">
                                 <input value="Sign up now" class="but  submit" style="    font-weight: 600;" type="submit">
                             </form>
                         </div>
@@ -555,7 +561,7 @@ if(isset($segments[0]) && !empty($segments[0])){
         </section>
 
         <!--Gallery section-->
-        <section id="gallery" class="gallery bg-grey pt-120 pb-120 text-center">
+        <section id="gallery" class="gallery bg-grey pt-120 text-center">
             <!--Container-->
             <div class="container">
                 <!--Row-->
@@ -566,17 +572,21 @@ if(isset($segments[0]) && !empty($segments[0])){
                     </div>
                     <div class="col-md-8 col-md-offset-2 mt-60 ">
                         <ul id="carousel">
-                            <li><img  src="<?php echo base_url();?>/img/s3.jpg" width="250" alt="ContactlessMenu"></li>
-                            <li><img  src="<?php echo base_url();?>/img/s2.jpg" width="250" alt="ContactlessMenu"></li>
-                            <li><img  src="<?php echo base_url();?>/img/s1.jpg" width="250" alt="ContactlessMenu"></li>
-                            <li><img  src="<?php echo base_url();?>/img/Cherry-menu-self-order.jpg" alt="Self order"></li>
-                            <li><img  src="<?php echo base_url();?>/img/Dish-page.jpg" alt="dish page"></li>
-                            <li><img  src="<?php echo base_url();?>/img/Feedback-form.jpg" alt="feedback form"></li>
-                            <li><img  src="<?php echo base_url();?>/img/Login.jpg" alt="login"></li>
-                            <li><img  src="<?php echo base_url();?>/img/Select-category.jpg" alt="select category"></li>
-                            <li><img  src="<?php echo base_url();?>/img/select-dish.jpg" alt="select dish"></li>
-                            <li><img  src="<?php echo base_url();?>/img/Select-user.jpg" alt="select user"></li>
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/s3.jpg" width="250" alt="ContactlessMenu"></li>-->
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/s2.jpg" width="250" alt="ContactlessMenu"></li>-->
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/s1.jpg" width="250" alt="ContactlessMenu"></li>-->
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/Cherry-menu-self-order.jpg" alt="Self order"></li>-->
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/Dish-page.jpg" alt="dish page"></li>-->
+                            <li><img  src="<?php echo base_url();?>/img/homescreen/1/img-4.jpg" alt="login"></li>
+                            <li><img  src="<?php echo base_url();?>/img/homescreen/1/img-1.jpg" alt="home"></li>
+                            <li><img  src="<?php echo base_url();?>/img/homescreen/1/img-2.jpg" alt="detail page"></li>
+                            <li><img  src="<?php echo base_url();?>/img/homescreen/1/img-3.jpg" alt="feedback form"></li>
 
+
+
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/Select-category.jpg" alt="select category"></li>-->
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/select-dish.jpg" alt="select dish"></li>-->
+<!--                            <li><img  src="--><?php //echo base_url();?><!--/img/Select-user.jpg" alt="select user"></li>-->
                         </ul>
                     </div>
                 </div>
@@ -596,9 +606,9 @@ if(isset($segments[0]) && !empty($segments[0])){
                     <div class="col-md-8 col-md-offset-2 col-sm-10 col-sm-offset-1 text-center mt-50">
                         <h3 class="title mb-5">Want to know more about Cherry Menu and how it works?</h3>
                         <p> Visit our support center, it has all the FAQ and information you're looking for.</p>
-                        <a class="but medium mt-40 scroll" href="https://www.cherrymenu.com/support/FAQ/" target="_blank">FAQ</a>
+                        <a class="but medium mt-40 scroll" href="<?php echo base_url('support/FAQ'); ?>" target="_blank">FAQ</a>
 
-                        <a class="but medium mt-40 scroll" href="https://www.cherrymenu.com/support/" target="_blank">Knowledge base</a>
+                        <a class="but medium mt-40 scroll" href="<?php echo base_url('support'); ?>" target="_blank">Knowledge base</a>
                     </div>
                 </div>
                 <!--End row-->
@@ -607,39 +617,6 @@ if(isset($segments[0]) && !empty($segments[0])){
         </section>
         <!--End faq section-->
         <!--Login section-->
-        <section id="login" class="login bg-dark-grey pt-70 pb-20 text-center">
-            <!--Container-->
-            <div class="container">
-                <!--Row-->
-                <div class="row">
-                    <div class="col-md-12 text-center mb-30">
-                        <h2 class="title light h2-title" style="font-size: 34px;    font-weight: 600;">Download Cherry Menu</h2>
-                    </div>
-                </div>
-                <!--End row-->
-                <!--Row-->
-
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form">
-                            <a class="but medium mt-10 scroll" id="btn-apple" target="_blank" href="https://itunes.apple.com/ae/app/cherry-menu/id1441509800?mt=8t"><img  src="<?php echo base_url();?>/img/apple.svg" alt="select user"><div style="padding-top: 12px;font-weight: bold;">iOS</div></a>
-                            <a class="but medium mt-10 scroll" id="btn-andriod" target="_blank" href="https://play.google.com/store/apps/details?id=com.virtualdusk.emenu"><img  src="<?php echo base_url();?>/img/android.svg" alt="select user"><div style="padding-top: 12px;font-weight: bold;">ANDROID</div></a>
-                            <!-- <form method="post" class="login-form" action="https://www.cherrymenu.com/login/">
-                               <input value="Login here" class="but  submit" type="submit">
-                            </form> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-8 col-md-offset-3 pt-50" style="padding:0px;">
-
-                        <p style="    float: left; font-size: 16px; color: #fff;">For more info on device capabilities <a target="_blank" href="https://www.cherrymenu.com/support/devices-capabilities/" style="color:#4672D9;    text-decoration: underline;">Click Here</a></p>
-                    </div>
-                </div>
-                <!--End row-->
-            </div>
-            <!--End container-->
-        </section>
         <!--End login section-->
 
         <div class="whatsapp">
@@ -661,7 +638,7 @@ if(isset($segments[0]) && !empty($segments[0])){
                         <ul class="mt-10">
                             <li><a href="terms-of-services.php" target="_blank">Terms of Services</a></li>
                             <li><a href="Privacy-Policy.php" target="_blank">Privacy Policy</a></li>
-                            <li><a href="https://www.cherrymenu.com/support" target="_blank">Support</a></li>
+                            <li><a href="<?php echo base_url('support'); ?>" target="_blank">Support</a></li>
                         </ul>
                     </div>
                 </div>
@@ -714,4 +691,3 @@ if(isset($segments[0]) && !empty($segments[0])){
     <!-- Fresh Chat Body END-->
     </body>
     </html>
-<?php }?>
