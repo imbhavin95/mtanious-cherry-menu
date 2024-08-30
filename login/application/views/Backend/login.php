@@ -6,47 +6,47 @@ if($_SERVER['HTTP_HOST'] == 'cherrymenu.com')
 {
     if($_SERVER['REQUEST_URI'] == '/login/')
     {
-        header('Location: https://www.cherrymenu.com/login/');
+        header('Location: '. $base_url);
     }
     else if($_SERVER['REQUEST_URI'] == '/login/login/')
     {
-        header('Location: https://www.cherrymenu.com/login/');
+        header('Location: '. $base_url);
     }
     else if($_SERVER['REQUEST_URI'] == '/login/login')
     {
-        header('Location: https://www.cherrymenu.com/login/');
+        header('Location: '. $base_url);
     }   
 
     else if($_SERVER['REQUEST_URI'] == '/login/Login/')
     {
-        header('Location: https://www.cherrymenu.com/login/');
+        header('Location: '. $base_url);
     } 
     else if($_SERVER['REQUEST_URI'] == '/login/Login')
     {
-        header('Location: https://www.cherrymenu.com/login/');
+        header('Location: '. $base_url);
     } 
 }
 else if($_SERVER['HTTP_HOST'] == 'www.cherrymenu.com')
 {
     if($_SERVER['REQUEST_URI'] == '/login/login/')
     {
-       header('Location: https://www.cherrymenu.com/login/');
+       header('Location: '. $base_url);
     }
     
     if($_SERVER['REQUEST_URI'] == '/login/Login/')
     {
-       header('Location: https://www.cherrymenu.com/login/');
+       header('Location: '. $base_url);
     }
 
 
     if($_SERVER['REQUEST_URI'] == '/login/login')
     {
-       header('Location: https://www.cherrymenu.com/login/');
+       header('Location: '. $base_url);
     }
     
     if($_SERVER['REQUEST_URI'] == '/login/Login')
     {
-       header('Location: https://www.cherrymenu.com/login/');
+       header('Location: '. $base_url);
     }
 }
 

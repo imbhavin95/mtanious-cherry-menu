@@ -129,9 +129,9 @@ var categories;
                         render: function (data, type, full, meta) {
                             var img = '';
                             if (data != null) {
-                                img = '<a class="fancybox" href="<?php echo "https://www.cherrymenu.com/login/". RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'; ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo "https://www.cherrymenu.com/login/".RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'; ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
+                                img = '<a class="fancybox" href="<?php echo base_url()."/". RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'; ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo base_url()."/".RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/'; ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             } else {
-                                img = '<a class="fancybox" href="<?php echo "https://www.cherrymenu.com/login/".DEFAULT_IMG?>" data-fancybox-group="gallery" ><img src="<?php echo base_url(DEFAULT_IMG) ?>" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
+                                img = '<a class="fancybox" href="<?php echo base_url()."/".DEFAULT_IMG?>" data-fancybox-group="gallery" ><img src="<?php echo base_url(DEFAULT_IMG) ?>" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             }
                             return img;
                         }
@@ -143,7 +143,7 @@ var categories;
                         render: function (data, type, full, meta) {
                             var img = '';
                             if (data != null) {
-                                img = '<a class="fancybox" href="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'); ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo "https://www.cherrymenu.com/login/".RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'; ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
+                                img = '<a class="fancybox" href="<?php echo base_url(RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'); ?>'+data+'"" data-fancybox-group="gallery" ><img src="<?php echo base_url()."/".RESTAURANT_IMAGES . '/' . $restaurant_id. '/categories/backgrounds/'; ?>'+data+'" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             } else {
                                 img = '<a class="fancybox" href="<?php echo base_url(DEFAULT_IMG)?>" data-fancybox-group="gallery" ><img src="<?php echo base_url(DEFAULT_IMG) ?>" height="55px" width="55px" alt="' + full.name + '" class="img-circle"/></a>';
                             }
@@ -203,11 +203,11 @@ var categories;
                             console.log('full',full);*/
                             var deleteurl = '<?php echo base_url(); ?>';
                                 action +='<div class="btn-group order_row1" data-id="' + full.id + '">'
-                                action +='<a class="icons-design" href="restaurant/categories/edit/' + btoa(full.id) + '"><img src="https://www.cherrymenu.com/login/public/edit-change-pencil.svg"></a>&nbsp;'                                
-                                action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '><img src="https://www.cherrymenu.com/login/public/Eye.svg"></a>&nbsp;'
+                                action +='<a class="icons-design" href="restaurant/categories/edit/' + btoa(full.id) + '"><img src="<?php echo base_url('public/edit-change-pencil.svg'); ?>"></a>&nbsp;'
+                                action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '><img src="<?php echo base_url('public/Eye.svg'); ?>"></a>&nbsp;'
                                 // if(category_id != full.id)
                                 // {
-                                action +='<a class="icons-design" href="'+ deleteurl +'restaurant/categories/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="https://www.cherrymenu.com/login/public/Trashcan.svg"></a>&nbsp;'
+                                action +='<a class="icons-design" href="'+ deleteurl +'restaurant/categories/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/Trashcan.svg'); ?>"></a>&nbsp;'
                                 // }
                                 /*action +='<button type="button" class="btn btn-light">Action</button>'
                                 action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'

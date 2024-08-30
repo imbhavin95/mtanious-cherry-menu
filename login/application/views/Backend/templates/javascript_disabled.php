@@ -9,7 +9,7 @@
   <title>Cherrymenu</title>
 
   <!-- ========== Css Files ========== -->
-  <link href="https://www.cherrymenu.com/login/assets/Backend/css/root.css" rel="stylesheet">
+  <link href="<?php echo base_url('assets/Backend/css/root.css');?>" rel="stylesheet">
   <style type="text/css">
     body{background: #F5F5F5;}
   </style>

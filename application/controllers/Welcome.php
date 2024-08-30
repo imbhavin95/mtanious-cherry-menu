@@ -61,8 +61,10 @@ class Welcome extends CI_Controller
 
                 if($resultdata2)
                 {
-                    // $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
+
+                    $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
                     $data['rest_image'] = $restaurantSettings['logo'];
+                    $data['name'] = $userdata['name'];
                     $data['restid'] = $restaurantId;
                     $data['currency'] = $restaurantSettings['currency'];
                     $data['item_data'] = @$this->ItemsModel->get_items_bycategory($restaurantId);
@@ -95,7 +97,8 @@ class Welcome extends CI_Controller
                             $this->load->view('restaurants/include/footer');
                         }
             }else{
-                // $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name, image');
+                $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name, image');
+                $data['name'] = $userdata['name'];
                 $data['rest_image'] = $restaurantSettings['logo'];
                 $data['restid'] = $restaurantId;
                 $data['currency'] = $restaurantSettings['currency'];

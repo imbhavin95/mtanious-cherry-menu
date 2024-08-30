@@ -107,7 +107,7 @@
                             var action = '';
                             var deleteurl = '<?php echo base_url(); ?>';
                                 action +='<div class="btn-group">'
-                                action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.order_id) + '" data-id=' + btoa(full.order_id) + '><img src="https://www.cherrymenu.com/login/public/Eye.svg"></a>'
+                                action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.order_id) + '" data-id=' + btoa(full.order_id) + '><img src="<?php echo base_url('public/Eye.svg'); ?>"></a>'
                                 action +='</div>'
                             return action;
                         }

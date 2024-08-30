@@ -196,12 +196,12 @@ if ($this->session->flashdata('error')) {
                             });
                             var deleteurl = '<?php echo base_url(); ?>';
                                 action +='<div class="btn-group">'
-                                action +='<a class="icons-design" href="restaurant/menus/edit/' + btoa(full.id) + '"><img src="https://www.cherrymenu.com/login/public/edit-change-pencil.svg"></a>&nbsp;'
+                                action +='<a class="icons-design" href="restaurant/menus/edit/' + btoa(full.id) + '"><img src="<?php echo base_url('public/edit-change-pencil.svg'); ?>"></a>&nbsp;'
                                 
-                                action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '><img src="https://www.cherrymenu.com/login/public/Eye.svg"></a>&nbsp;'
+                                action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '><img src="<?php echo base_url('public/Eye.svg'); ?>"></a>&nbsp;'
                                 if(menu_id != full.id)
                                 {
-                                action +='<a class="icons-design" href="'+ deleteurl +'restaurant/menus/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="https://www.cherrymenu.com/login/public/Trashcan.svg"></a>&nbsp;'
+                                action +='<a class="icons-design" href="'+ deleteurl +'restaurant/menus/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/Trashcan.svg'); ?>"></a>&nbsp;'
                                 }
                                 /*action +='<button type="button" class="btn btn-light">Action</button>'
                                 action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'

@@ -17,7 +17,7 @@
 
 <div class="menubar-area footer-fixed">
     <div class="toolbar-inner menubar-nav justify-content-center">
-        <a href="<?php echo $this->uri->segment(2) == 'item_detail' || $this->uri->segment(1) == 'restaurant' ? base_url('/r/'.$data['name']) : '#'; ?>" class="nav-link <?php echo $this->uri->segment(1) == 'r' && $this->uri->segment(2) !== 'item_detail' ? 'active' : ''; ?>">
+        <a href="<?php echo $this->uri->segment(2) == 'r' || $this->uri->segment(1) == 'restaurant' ? base_url('/'.$data['name']) : '#'; ?>" class="nav-link <?php echo $this->uri->segment(1) == 'r' && $this->uri->segment(2) !== 'item_detail' ? 'active' : ''; ?>">
             <i class="fi fi-rr-home"></i>
         </a>
         <a href="<?php echo base_url('/restaurant/review?rid='.$data['restid']) ?>" class="nav-link <?php echo $this->uri->segment(1) == 'review' ? 'active' : ''; ?>">
@@ -51,21 +51,21 @@ function current_url_custom()
 <script src="<?= base_url('frontend/assets/js/settings.js') ?>"></script>
 <script src="<?= base_url('frontend/assets/js/custom.js') ?>"></script>
 <script>
-    self.addEventListener('install', (e) => {
-        e.waitUntil(
-            caches.open('app-store').then((cache) => cache.addAll([
-                '/kibunCafe'
-            ])),
-        );
-    });
-
-    self.addEventListener('fetch', (e) => {
-        e.respondWith(
-            caches.match(e.request).then(function (response) {
-                return response || fetch(e.request);
-            })
-        );
-    });
+    // self.addEventListener('install', (e) => {
+    //     e.waitUntil(
+    //         caches.open('app-store').then((cache) => cache.addAll([
+    //             '/kibunCafe'
+    //         ])),
+    //     );
+    // });
+    //
+    // self.addEventListener('fetch', (e) => {
+    //     e.respondWith(
+    //         caches.match(e.request).then(function (response) {
+    //             return response || fetch(e.request);
+    //         })
+    //     );
+    // });
 
     var myDynamicManifest = {
         "name": "CherryMenu",
@@ -105,21 +105,21 @@ function current_url_custom()
         });
     }
 
-    self.addEventListener('fetch', event => {
-        event.respondWith(
-            caches.open(CACHE_NAME).then(cache => {
-                return cache.match(event.request).then(response => {
-                    const fetchPromise = fetch(event.request).then(networkResponse => {
-                        if (networkResponse) {
-                            cache.put(event.request, networkResponse.clone());
-                        }
-                        return networkResponse;
-                    });
-                    return response || fetchPromise;
-                });
-            })
-        );
-    });
+    // self.addEventListener('fetch', event => {
+    //     event.respondWith(
+    //         caches.open(CACHE_NAME).then(cache => {
+    //             return cache.match(event.request).then(response => {
+    //                 const fetchPromise = fetch(event.request).then(networkResponse => {
+    //                     if (networkResponse) {
+    //                         cache.put(event.request, networkResponse.clone());
+    //                     }
+    //                     return networkResponse;
+    //                 });
+    //                 return response || fetchPromise;
+    //             });
+    //         })
+    //     );
+    // });
 </script>
 </body>
 </html>

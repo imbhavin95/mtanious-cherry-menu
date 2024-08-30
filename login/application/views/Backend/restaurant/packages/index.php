@@ -43,7 +43,7 @@
                         <img src="<?php echo base_url()?>assets/Backend/packages/group.svg" alt="img" class="img">
                     </div>
                     <div class="col-md-10">
-                        <p>Need help?<a href="https://www.cherrymenu.com/contact.php" target="_blank" style="color:white">contact us</a></p>
+                        <p>Need help?<a href="https://www.cherrymenu.com/contact" target="_blank" style="color:white">contact us</a></p>
                     </div>
                 </div>
             </div>

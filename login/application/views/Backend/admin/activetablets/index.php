@@ -111,7 +111,7 @@
                             var action = '';
                             var deleteurl = '<?php echo base_url(); ?>';
                                 action +='<div class="btn-group">'
-                                action +='<a class="icons-design" href="'+ deleteurl +'restaurant/activetablets/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="https://www.cherrymenu.com/login/public/Trashcan.svg"></a>'
+                                action +='<a class="icons-design" href="'+ deleteurl +'restaurant/activetablets/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/Trashcan.svg'); ?>"></a>'
                                 /*action +='<button type="button" class="btn btn-light">Action</button>'
                                 action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
                                 action +='<span class="caret"></span>'

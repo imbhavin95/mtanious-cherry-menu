@@ -153,7 +153,7 @@
                                  
                             <div class="clearfix"></div>
                                  <?php if(isset($rest_name) && !empty($rest_name)){?>
-                                 <p><a target='_blank' href="https://www.cherrymenu.com/<?php echo $rest_name;?>">Web Menu Link</a></p>
+                                 <p><a target='_blank' href="<?php echo base_url('').'/'.$rest_name;?>">Web Menu Link</a></p>
                              <?php }?>
                            <!--  </div>  -->
                         <button type="submit" class="btn btn-default">Submit</button>
@@ -164,8 +164,8 @@
         </div>
     </div>
 </div>
-<script type="text/javascript" src="assets/Backend/validation_jquery/js/jquery.validate.js"></script>
-<script src="assets/Backend/js/additional-methods.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url('assets/Backend/validation_jquery/js/jquery.validate.js'); ?>"></script>
+<script src="<?php echo base_url('assets/Backend/js/additional-methods.min.js'); ?>"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         $.validator.addMethod('filesize', function (value, element, param) {

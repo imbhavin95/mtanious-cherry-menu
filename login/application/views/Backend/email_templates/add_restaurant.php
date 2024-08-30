@@ -48,7 +48,7 @@
 	<tr>
 		<td style="padding: 57px 0 87px;text-align: center;">
 			<a href="#" style="display:inline-block;">
-				<img src="https://www.cherrymenu.com/login/assets/images/logo.png"/>
+				<img src="<?php echo base_url('assets/images/logo.png'); ?>"/>
 			</a>
 		</td>
 	</tr>
@@ -91,7 +91,7 @@
 			<table style="background: #F7F7FA;width: 100%;padding: 45px;">
 				<tr>
 					<td style="text-align:left;">
-						<a href="#" style="font-size: 14px;color: #000000;text-align: center;line-height: 24px;"><img src="https://www.cherrymenu.com/login/assets/images/Heart.png"/></a>
+						<a href="#" style="font-size: 14px;color: #000000;text-align: center;line-height: 24px;"><img src="<?php echo base_url('assets/images/Heart.png'); ?>"/></a>
 					</td>
 					<td style="text-align: center;">
 						<a href="#" style="font-size: 14px;color: #000000;text-align: center;line-height: 24px;">+971 4 557 9200</a>

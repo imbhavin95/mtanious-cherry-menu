@@ -7,14 +7,14 @@
         <META HTTP-EQUIV="Refresh" CONTENT="0;URL=<?php echo base_url('js_disabled'); ?>">
 </noscript>
 <title><?php echo $title; ?></title>
-<link rel="icon" href="https://www.cherrymenu.com/img/faviconcherry.jpg" type="image/gif" sizes="16x16">
+<link rel="icon" href="<?php echo base_url('img/faviconcherry.jpg'); ?>" type="image/gif" sizes="16x16">
 <!-- ========== Css Files ========== -->
 <base href="<?php echo base_url(); ?>">
-<link href="assets/Backend/css/custome.css" rel="stylesheet">
-<link href="assets/Backend/css/root.css" rel="stylesheet">
-<link href="assets/Backend/validation_jquery/css/cmxform.css" rel="stylesheet" type="text/css" />
+<link href="<?php echo base_url('assets/Backend/css/custome.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/Backend/css/root.css'); ?>" rel="stylesheet">
+<link href="<?php echo base_url('assets/Backend/validation_jquery/css/cmxform.css'); ?>" rel="stylesheet" type="text/css" />
 <!-- <link href="assets/Backend/validation_jquery/css/cmxformTemplate.css" rel="stylesheet" type="text/css" />
 <link href="assets/Backend/validation_jquery/css/core.css" rel="stylesheet" type="text/css" />
 <link href="assets/Backend/validation_jquery/css/reset.css" rel="stylesheet" type="text/css" />
 <link href="assets/Backend/validation_jquery/css/screen.css" rel="stylesheet" type="text/css" /> -->
-<link rel="stylesheet" href="assets/Backend/css/jquery.fancybox.min.css" media="screen">
+<link rel="stylesheet" href="<?php echo base_url('assets/Backend/css/jquery.fancybox.min.css'); ?>" media="screen">

@@ -48,7 +48,7 @@
 	<tr>
 		<td style="padding: 57px 0 87px;text-align: center;">
 			<a href="#" style="display:inline-block;">
-				<img src="https://www.cherrymenu.com/login/assets/images/logo.png"/>
+				<img src="<?php echo base_url('assets/images/logo.png'); ?>"/>
 			</a>
 		</td>
 	</tr>

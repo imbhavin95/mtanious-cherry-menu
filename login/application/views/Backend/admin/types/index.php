@@ -101,9 +101,9 @@
                             var deleteurl = '<?php echo base_url(); ?>';
                             // if (full.is_active == 1) {
                                 action +='<div class="btn-group">'
-                                action +='<a class="icons-design" href="admin/types/edit/' + btoa(full.id) + '"><img src="https://www.cherrymenu.com/login/public/edit-change-pencil.svg"></a>&nbsp;'
+                                action +='<a class="icons-design" href="admin/types/edit/' + btoa(full.id) + '"><img src="<?php echo base_url('public/edit-change-pencil.svg'); ?>"></a>&nbsp;'
                                 
-                                action +='<a class="icons-design" href="'+ deleteurl +'admin/types/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="https://www.cherrymenu.com/login/public/Trashcan.svg"></a>'
+                                action +='<a class="icons-design" href="'+ deleteurl +'admin/types/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/Trashcan.svg'); ?>"></a>'
                                 /*action +='<button type="button" class="btn btn-light">Action</button>'
                                 action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
                                 action +='<span class="caret"></span>'

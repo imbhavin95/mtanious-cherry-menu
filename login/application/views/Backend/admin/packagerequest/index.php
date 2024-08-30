@@ -184,7 +184,7 @@ var items,categories,menus,devices_limit;
                                 {
                                     disable = 'disabled="disabled"';
                                 }
-                                action +='<a class="icons-design" href="'+ assign_package +'admin/packagerequest/assign_package/'+ btoa(full.id) + '" '+ disable +' data-pkg_id="' + full.pkg_id + '" data-users="' + full.users + '" data-menus="' + full.menus + '" data-categories="' + full.categories + '" data-items="' + full.items + '" data-devices_limit="' + full.devices_limit + '" onclick="return confirm_alert(this)"><img src="https://www.cherrymenu.com/login/public/assign.svg"></a>'
+                                action +='<a class="icons-design" href="'+ assign_package +'admin/packagerequest/assign_package/'+ btoa(full.id) + '" '+ disable +' data-pkg_id="' + full.pkg_id + '" data-users="' + full.users + '" data-menus="' + full.menus + '" data-categories="' + full.categories + '" data-items="' + full.items + '" data-devices_limit="' + full.devices_limit + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/assign.svg'); ?>"></a>'
                                 /*action +='<button type="button" class="btn btn-light">Action</button>'
                                 action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
                                 action +='<span class="caret"></span>'

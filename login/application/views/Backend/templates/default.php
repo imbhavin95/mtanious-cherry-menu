@@ -4,7 +4,7 @@
 
     <?php $this->load->view('Backend/templates/header')?>
     <script type="text/javascript" src="assets/Backend/js/jquery.min.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/bootstrap/bootstrap.min.js"></script>
+    <script src="<?php echo base_url('assets/Backend/js/bootstrap/bootstrap.min.js'); ?>"></script>
     <style type="text/css">
     .icons-design{
     padding: 6px;
@@ -21,7 +21,7 @@
 <?php $action = $this->router->fetch_method(); ?>
     <?php $userType = ($this->session->userdata('login_user')['role'] === ADMIN) ? ADMIN : RESTAURANT; ?>
     <!-- page loading -->
-    <div class="loading"><img src="https://www.cherrymenu.com/login/assets/Backend/img/loading.gif" alt="loading-img"></div>
+    <div class="loading"><img src="<?php echo base_url('assets/Backend/img/loading.gif'); ?>" alt="loading-img"></div>
     <!-- START TOP -->
     <div id="top" class="clearfix">
         <div class="applogo" style=" padding: 2px 14px 0px 0px;margin-top: 0px;">
@@ -145,27 +145,27 @@
     <!-- ================================================
     Plugin.js - Some Specific JS codes for Plugin Settings
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/plugins.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/plugins.js'); ?>"></script>
     <!-- ================================================
     Bootstrap Select
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/bootstrap-select/bootstrap-select.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/bootstrap-select/bootstrap-select.js'); ?>"></script>
     <!-- ================================================
     Bootstrap Toggle
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/bootstrap-toggle/bootstrap-toggle.min.js'); ?>"></script>
     <!-- ================================================
     Bootstrap WYSIHTML5
     ================================================ -->
     <!-- main file -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/bootstrap-wysihtml5/wysihtml5-0.3.0.min.js'); ?>"></script>
     <!-- bootstrap file -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/bootstrap-wysihtml5/bootstrap-wysihtml5.js'); ?>"></script>
 
     <!-- ================================================
     Summernote
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/summernote/summernote.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/summernote/summernote.min.js'); ?>"></script>
 
     <!-- ================================================
     Rickshaw
@@ -173,36 +173,36 @@
     <!-- ================================================
     Data Tables
     ================================================ -->
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/datatables/datatables.min.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/datatables/dataTables.buttons.min.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/datatables/jszip.min.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/datatables/pdfmake.min.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/datatables/vfs_fonts.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/datatables/buttons.html5.min.js"></script>
+    <script src="<?php echo base_url('assets/Backend/js/datatables/datatables.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/Backend/js/datatables/dataTables.buttons.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/Backend/js/datatables/jszip.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/Backend/js/datatables/pdfmake.min.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/Backend/js/datatables/vfs_fonts.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/Backend/js/datatables/buttons.html5.min.js'); ?>"></script>
 
     <!-- ================================================
     Sweet Alert
     ================================================ -->
     <!-- <script src="https://www.cherrymenu.com/login/assets/Backend/js/sweet-alert/sweet-alert.min.js"></script> -->
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/sweetalert2.all.min.js"></script>
+    <script src="<?php echo base_url('assets/Backend/js/sweetalert2.all.min.js'); ?>"></script>
 
     <!-- ================================================
     Kode Alert
     ================================================ -->
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/kode-alert/main.js"></script>
+    <script src="<?php echo base_url('assets/Backend/js/kode-alert/main.js'); ?>"></script>
     <!-- ================================================
     jQuery UI
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/jquery-ui/jquery-ui.min.js'); ?>"></script>
     <!-- ================================================
     Moment.js
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/moment/moment.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/moment/moment.min.js'); ?>"></script>
     <!-- ================================================
     Bootstrap Date Range Picker
     ================================================ -->
-    <script type="text/javascript" src="https://www.cherrymenu.com/login/assets/Backend/js/date-range-picker/daterangepicker.js"></script>
-    <script src="https://www.cherrymenu.com/login/assets/Backend/js/jquery.fancybox.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url('assets/Backend/js/date-range-picker/daterangepicker.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/Backend/js/jquery.fancybox.min.js'); ?>"></script>
    <script>
         $(".fancybox").fancybox({
             openEffect: "none",

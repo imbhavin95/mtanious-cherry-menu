@@ -17,13 +17,13 @@
   <base href="<?php echo base_url(); ?>">
   
   <!-- ========== Css Files ========== -->
-  <link href="assets/Backend/css/root.css" rel="stylesheet">
-  <link href="assets/Backend/css/custome.css" rel="stylesheet">
-    <link href="assets/Backend/validation_jquery/css/cmxform.css" rel="stylesheet" type="text/css" />
-    <link href="assets/Backend/validation_jquery/css/cmxformTemplate.css" rel="stylesheet" type="text/css" />
-    <link href="assets/Backend/validation_jquery/css/core.css" rel="stylesheet" type="text/css" />
-    <link href="assets/Backend/validation_jquery/css/reset.css" rel="stylesheet" type="text/css" />
-    <link href="assets/Backend/validation_jquery/css/screen.css" rel="stylesheet" type="text/css" />
+  <link href="<?php echo base_url('assets/Backend/css/root.css'); ?>" rel="stylesheet">
+  <link href="<?php echo base_url('assets/Backend/css/custome.css'); ?>" rel="stylesheet">
+    <link href="<?php echo base_url('assets/Backend/validation_jquery/css/cmxform.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/Backend/validation_jquery/css/cmxformTemplate.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/Backend/validation_jquery/css/core.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/Backend/validation_jquery/css/reset.css'); ?>" rel="stylesheet" type="text/css" />
+    <link href="<?php echo base_url('assets/Backend/validation_jquery/css/screen.css'); ?>" rel="stylesheet" type="text/css" />
   <style type="text/css">
      body{    
           background-image : url('assets/Backend/img/cherrymenu-login-bg.jpg') ;

@@ -77,7 +77,7 @@
 </div style="width:100%;">
   <b>Terms & Conditions</b>
   <br>
-  <a href="https://www.cherrymenu.com/terms-of-services.php">Click here to view</a>
+  <a href="https://cherrymenu.com/terms-and-conditions/">Click here to view</a>
 
 <div>
 </body>
