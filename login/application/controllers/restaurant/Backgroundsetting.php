@@ -22,44 +22,34 @@ class BackgroundSetting extends MY_Controller
         $logo_image = isset($settings) ? $settings['logo'] : null;
         $rest_video = isset($settings) ? $settings['video'] : null;
         $data['settings'] = $settings;
-        $data['rest_name']=$rest_name=$settings['rest_name'];
+        $data['rest_name']= $rest_name = $settings['rest_name'];
         $data['title'] = WEBNAME.' | ID Settings';
         $data['head'] = 'ID Settings';
         $data['label'] = 'ID Settings';
         $data['currencies']=$this->users_model->run_manual_query('SELECT * FROM `default_currencies` ');
         // $rest_name=str_replace(' ', '_', $this->input->post('rest_name'));		
-        $rest_name=$rest_name ? str_replace('', '_', $rest_name): "";
+        $rest_name = $rest_name ? str_replace('', '_', $rest_name): "";
+
+        /*print_r($rest_name);
+        exit;*/
 
         if(isset($_POST) && !empty($_POST)){
-          $restnameres=$this->Menus_model->sql_select(TBL_SETTINGS, 'id', ['where' => ['is_deleted' => 0, 'is_active' => 1,'rest_name' => $rest_name,'user_id!=' =>$this->session->userdata('login_user')['id']]], ['count' => true]);
-        if($restnameres){
-            $this->session->set_flashdata('error', 'Restaurant name taken. Please enter different one');
-            redirect('restaurant/backgroundsetting');
-        }
+            $restnameres = $this->Menus_model->sql_select(TBL_SETTINGS, 'id', ['where' => ['is_deleted' => 0, 'is_active' => 1,'rest_name' => $rest_name, 'user_id != ' =>$this->session->userdata('login_user')['id']]], ['count' => true]);
+            if($restnameres && !empty($rest_name)){
+                $this->session->set_flashdata('error', 'Restaurant name taken. Please enter different one');
+                redirect('restaurant/backgroundsetting');
+            }
         }
        
 
         if (isset($_FILES['backgroundimage'])) {
             if ($_FILES['backgroundimage']['name'] != '') {
-                /*$image_data = upload_image('backgroundimage', DEFAULT_BACKGROUND);
-                if (is_array($image_data)) {
-                    $data['background_image_validation'] = $image_data['errors'];
-                } else {
-                    if ($image != '') {
-                        unlink(DEFAULT_BACKGROUND . $image);
-                    }
-                    $image = $image_data;
-                }*/
-                        $extension = explode('/', $_FILES['backgroundimage']['type']);
-                        $randname = uniqid() . time() . '.' . end($extension);
-                        if($_FILES['backgroundimage']['size'] / 1024 <= 2048) { // 2MB
-                         if($_FILES['backgroundimage']['type'] == 'image/jpeg' || 
-                         $_FILES['backgroundimage']['type'] == 'image/pjpeg' || 
-                         $_FILES['backgroundimage']['type'] == 'image/png' ||
-                         $_FILES['backgroundimage']['type'] == 'image/gif'){
-                      
+                $extension = explode('/', $_FILES['backgroundimage']['type']);
+                $randname = uniqid() . time() . '.' . end($extension);
+                if($_FILES['backgroundimage']['size'] / 1024 <= 2048) { // 2MB
+                     if($_FILES['backgroundimage']['type'] == 'image/jpeg' || $_FILES['backgroundimage']['type'] == 'image/pjpeg' || $_FILES['backgroundimage']['type'] == 'image/png' || $_FILES['backgroundimage']['type'] == 'image/gif'){
                             $source_file = $_FILES['backgroundimage']['tmp_name'];
-                            $target_file = DEFAULT_BACKGROUND . $randname; 
+                            $target_file = DEFAULT_BACKGROUND . $randname;
                             $width      = '';
                             $height     = '';
                             $quality    = '40';
@@ -67,10 +57,10 @@ class BackgroundSetting extends MY_Controller
                             $success = compress_image($source_file, $target_file, $width, $height, $quality);
                             if ($image != '') {
                                 unlink(DEFAULT_BACKGROUND . $image);
-                                }
+                            }
                             $image = $randname;
-                                }
-                             }
+                     }
+                }
             }
 
             if ($_FILES['logo']['name'] != '') {
@@ -149,9 +139,10 @@ class BackgroundSetting extends MY_Controller
                 'bg_after_login' => $image,
                 'logo' => $logo_image,
                 'video' => $rest_video,
-                'currency' =>$this->input->post('currency_code'),
-                'rest_name' => $rest_name
+                'currency' => $this->input->post('currency_code'),
+                'rest_name' => $this->input->post('rest_name')
             );
+
             if ($settings) {
                 $dataArr['updated_at'] = date('Y-m-d H:i:s');
                 $this->users_model->common_insert_update('update', TBL_SETTINGS, $dataArr, ['id' => $this->input->post('hidden_id')]);

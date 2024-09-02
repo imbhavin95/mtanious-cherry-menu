@@ -61,7 +61,6 @@ class Welcome extends CI_Controller
 
                 if($resultdata2)
                 {
-
                     $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
                     $data['rest_image'] = $restaurantSettings['logo'];
                     $data['name'] = $userdata['name'];

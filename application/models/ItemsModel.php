@@ -314,8 +314,8 @@ class ItemsModel extends MY_Model
     public function get_items_bycategory($id){
         $this->db->select('id');
         $where=array(
-        'restaurant_id'=>$id,
-        'is_webmenu_active'=>1
+            'restaurant_id'=>$id,
+            'is_webmenu_active'=>1
         );
         $this->db->where($where);
         $res_menu_ids= $this->db->get(TBL_MENUS)->result_array();

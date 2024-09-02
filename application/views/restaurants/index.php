@@ -41,7 +41,7 @@
                                                         <?php
                                                         $itemlink = base_url("/r/item_detail?cid=" . $subItem["category_id"] . "&itid=" . $subItem["id"] . "&rid=" . $data['restid'] . "&sid=1");
                                                         ?>
-                                                        <?php $image = "https://www.cherrymenu.com/login/public/restaurants/" . $data['restid'] . "/items/" . $subItem['id'] . "/thumbnail/" . $subItem['thumbnail']; ?>
+                                                        <?php $image = base_url('')."/login/public/restaurants/" . $data['restid'] . "/items/" . $subItem['id'] . "/thumbnail/" . $subItem['thumbnail']; ?>
                                                         <a href="<?php echo $itemlink ?>">
                                                             <img src="<?php echo $subItem['thumbnail'] ? $image : base_url('frontend/assets/images/no-image.jpg'); ?>"></a>
 <!--                                                        <div class="dz-rating"><i class="fa fa-star"></i> 3.8</div>-->
