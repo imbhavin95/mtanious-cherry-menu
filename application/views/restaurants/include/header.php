@@ -77,7 +77,7 @@
                 ?>
             </div>
             <div class="mid-content">
-                <a href="<?php echo $this->uri->segment(2) == 'item_detail' ? base_url('/r/'.$data['name']) : '#'; ?>"><img width="100" src="<?php echo $data['rest_image'] ? base_url().'/login/public/settings/logo/'.$data['rest_image'] : base_url('img/gray-logo.svg'); ?>"/></a>
+                <a href="<?php echo $this->uri->segment(2) == 'item_detail' && !empty($data) ? base_url('/r/'.$data['name']) : '#'; ?>"><img width="100" src="<?php echo !empty($data) && $data['rest_image'] ? base_url().'/login/public/settings/logo/'.$data['rest_image'] : base_url('img/gray-logo.svg'); ?>"/></a>
             </div>
             <div class="right-content d-flex align-items-center gap-4">
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

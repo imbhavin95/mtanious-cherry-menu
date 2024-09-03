@@ -63,7 +63,7 @@ class Welcome extends CI_Controller
                 {
                     $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name,image');
                     $data['rest_image'] = $restaurantSettings['logo'];
-                    $data['name'] = $userdata['name'];
+                    $data['name'] = $restaurantSettings['rest_name'];
                     $data['restid'] = $restaurantId;
                     $data['currency'] = $restaurantSettings['currency'];
                     $data['item_data'] = @$this->ItemsModel->get_items_bycategory($restaurantId);
@@ -97,7 +97,7 @@ class Welcome extends CI_Controller
                         }
             }else{
                 $userdata = $this->UsersModel->get_user_detail(['id' => $restaurantId] , 'name, image');
-                $data['name'] = $userdata['name'];
+                $data['name'] = $restaurantSettings['rest_name'];;
                 $data['rest_image'] = $restaurantSettings['logo'];
                 $data['restid'] = $restaurantId;
                 $data['currency'] = $restaurantSettings['currency'];
@@ -131,9 +131,10 @@ class Welcome extends CI_Controller
         $data['cat_id'] = $catid;
         $data['sid'] = $sid;
         $userdata = $this->UsersModel->get_user_detail(['id' => $restid], 'name,image');
-        $data['rest_name'] = $userdata['name'];
-        $data['name'] = $userdata['name'];
         $res = $this->SettingsModel->get_settings_detail(['user_id' => $restid, 'is_deleted' => 0, 'is_active' => 1]);
+        $data['rest_name'] = $res['rest_name'];
+        $data['name'] = $res['rest_name'];
+
         $data['currency'] = $res['currency'];
         $data['rest_image'] = $res['logo'];
         $data['sesurl'] = "https://www.cherrymenu.com/" . $res['rest_name'];
@@ -171,9 +172,10 @@ class Welcome extends CI_Controller
         $data['singleitem'] = $this->ItemsModel->single_item_detail($itid);
         $data['restid'] = $restid;
         $userdata = $this->UsersModel->get_user_detail(['id' => $restid], 'name,image');
-        $data['rest_name'] = $userdata['name'];
-        $data['name'] = $userdata['name'];
         $res = $this->SettingsModel->get_settings_detail(['user_id' => $restid, 'is_deleted' => 0, 'is_active' => 1]);
+        $data['rest_name'] = $res['rest_name'];
+        $data['name'] = $res['rest_name'];
+
         $data['currency'] = $res['currency'];
         $data['rest_image'] = $res['logo'];
 

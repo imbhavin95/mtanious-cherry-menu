@@ -17,10 +17,10 @@
 
 <div class="menubar-area footer-fixed">
     <div class="toolbar-inner menubar-nav justify-content-center">
-        <a href="<?php echo $this->uri->segment(2) == 'r' || $this->uri->segment(1) == 'restaurant' ? base_url('/'.$data['name']) : '#'; ?>" class="nav-link <?php echo $this->uri->segment(1) == 'r' && $this->uri->segment(2) !== 'item_detail' ? 'active' : ''; ?>">
+        <a href="<?php echo $this->uri->segment(2) == 'item_detail' || $this->uri->segment(1) == 'restaurant' ? base_url('/'.$data['name']) : '#'; ?>" class="nav-link <?php echo $this->uri->segment(1) == $data['name'] && $this->uri->segment(2) !== 'item_detail' ? 'active' : ''; ?>">
             <i class="fi fi-rr-home"></i>
         </a>
-        <a href="<?php echo base_url('/restaurant/review?rid='.$data['restid']) ?>" class="nav-link <?php echo $this->uri->segment(1) == 'review' ? 'active' : ''; ?>">
+        <a href="<?php echo base_url('/restaurant/review?rid='.$data['restid']) ?>" class="nav-link <?php echo $this->uri->segment(1) == 'restaurant' ? 'active' : ''; ?>">
             <i class="fi fi-rr-note"></i>
         </a>
     </div>
