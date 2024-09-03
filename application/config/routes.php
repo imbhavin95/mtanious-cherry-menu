@@ -59,7 +59,7 @@ $route['terms_of_services'] = 'welcome/terms_of_services';
 $route['tony_test'] = 'welcome/tony_test';
 $route['r/item_detail'] = 'welcome/item_detail';
 $route['restaurant/review'] = 'welcome/review';
-$route['submit-review'] = 'welcome/submitReview';
+$route['restaurant/submit-review'] = 'welcome/submitReview';
 $route['translate_uri_dashes'] = FALSE;
 $route['(:any)'] = 'welcome/restaurant_landing_page';
 

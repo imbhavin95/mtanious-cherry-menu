@@ -1,6 +1,6 @@
 <main class="page-content space-top p-b50">
     <div class="container">
-        <form action="<?php echo base_url('submit-review'); ?>" method="post">
+        <form action="<?php echo base_url('restaurant/submit-review'); ?>" method="post">
             <input type="hidden" value="<?php echo $data['restid']; ?>" name="rid">
             <div class="write-reviews-box">
                 <div class="rating-content">
