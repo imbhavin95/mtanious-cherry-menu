@@ -153,7 +153,7 @@
                                  
                             <div class="clearfix"></div>
                                  <?php if(isset($rest_name) && !empty($rest_name)){?>
-                                 <p><a target='_blank' href="<?php echo base_url('').'/'.$rest_name;?>">Web Menu Link</a></p>
+                                 <p><a target='_blank' href="<?php echo 'https://app.cherrymenu.com/'.$rest_name;?>">Web Menu Link</a></p>
                              <?php }?>
                            <!--  </div>  -->
                         <button type="submit" class="btn btn-default">Submit</button>

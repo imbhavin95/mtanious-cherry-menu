@@ -49,7 +49,8 @@ class Login extends MY_Controller
                         'package_id' => $freeTriel['id'],
                         'restaurant_id' => $id,
                         'status' => 'activate',
-                        'flag' => 1
+                        'flag' => 1,
+                        'end_date' => date('Y-m-d', strtotime('+1 year'))
                     );
                     $package['request_date'] = date('Y-m-d');
                     $package['created_at'] = date('Y-m-d H:i:s');

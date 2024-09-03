@@ -82,27 +82,22 @@ class Registration extends CI_Controller
 
            send_email(trim($this->input->post('email')), 'new_restaurant', $email_data);
            send_email('info@cherrymenu.com', 'new_restaurant2', $email_data2);
-          // send_email('alissar@virtualdusk.com', 'new_restaurant2', $email_data2);
 
-           //$this->send_email_new(trim($this->input->post('email')), 'new_restaurant', $email_data);
-
-            // $this->freeTrial(trim($this->input->post('email')), trim($this->input->post('name')));
-            // //Get Free package if exist in Package Detail table.
-            // $freeTriel = $this->Packages_model->get_package_detail(['is_deleted' => 0,'is_active' => 1,'type' => 'free']);
-            // if(!empty($freeTriel)) 
-            // {
-            //     $package = array(
-            //         'package_id' => $freeTriel['id'],
-            //         'restaurant_id' => $inserted_id,
-            //         'status' => 'activate',
-            //         'flag' => 1
-            //     );
-            //     $package['request_date'] = date('Y-m-d');
-            //     $package['created_at'] = date('Y-m-d H:i:s');
-            //     //Assign free packages limit.
-            //     $this->users_model->common_insert_update('update', TBL_USERS, ['devices_limit' => $freeTriel['devices_limit'], 'users_limit' => $freeTriel['users'], 'menus_limit' => $freeTriel['menus'], 'categories_limit' => $freeTriel['categories'],'items_limit' => $freeTriel['items']], ['id' => $inserted_id]);
-            //     $package_detail_id = $this->users_model->common_insert_update('insert', TBL_PACKAGE_DETAILS, $package); 
-            // }
+//           $freeTriel = $this->Packages_model->get_package_detail(['is_deleted' => 0 ,'is_active' => 1 ,'type' => 'free']);
+//             if(!empty($freeTriel))
+//             {
+//                 $package = array(
+//                     'package_id' => $freeTriel['id'],
+//                     'restaurant_id' => $inserted_id,
+//                     'status' => 'activate',
+//                     'flag' => 1
+//                 );
+//                 $package['request_date'] = date('Y-m-d');
+//                 $package['created_at'] = date('Y-m-d H:i:s');
+//                 //Assign free packages limit.
+//                 $this->users_model->common_insert_update('update', TBL_USERS, ['devices_limit' => $freeTriel['devices_limit'], 'users_limit' => $freeTriel['users'], 'menus_limit' => $freeTriel['menus'], 'categories_limit' => $freeTriel['categories'],'items_limit' => $freeTriel['items']], ['id' => $inserted_id]);
+//                 $package_detail_id = $this->users_model->common_insert_update('insert', TBL_PACKAGE_DETAILS, $package);
+//             }
 
             $this->defaultVal($inserted_id);
             $this->session->set_flashdata('success', 'Restaurant has been registered successfully and Email has been sent to user successfully');

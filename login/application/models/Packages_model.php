@@ -48,7 +48,7 @@ class Packages_model extends MY_Model
         if (!empty($keyword['value'])) {
             $this->db->where('(name LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') . ' OR price LIKE ' . $this->db->escape('%' . $keyword['value'] . '%')  . ' OR description LIKE ' . $this->db->escape('%' . $keyword['value'] . '%')  . ' OR type LIKE ' . $this->db->escape('%' . $keyword['value'] . '%') .  ')');
         }
-        $this->db->where(['is_deleted' => 0, 'type' => 'paid']);
+        $this->db->where(['is_deleted' => 0]);
         $this->db->order_by($columns[$this->input->get('order')[0]['column']], $this->input->get('order')[0]['dir']);
         if ($type == 'result') {
             $this->db->limit($this->input->get('length'), $this->input->get('start'));

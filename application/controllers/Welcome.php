@@ -189,7 +189,7 @@ class Welcome extends CI_Controller
 
         if($feedbackQuery){
             $this->session->set_flashdata('review_success', 'Your review has been submitted!');
-            redirect('/review?rid='.$_POST['rid']);
+            redirect('/restaurant/review?rid='.$_POST['rid']);
         }
     }
 
