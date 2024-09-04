@@ -179,7 +179,7 @@
                     </div>
                 </div>
                 
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                             <p class="margin-t-20">Is Dish New </p> 
                             <div class="radio radio-info radio-inline">
                                 <input type="radio" id="is_dish_new1" value="1" tabindex="3" name="is_dish_new" <?php echo (isset($item) && $item['is_dish_new'] == 1) ? 'checked' : ''; ?> >
@@ -190,7 +190,7 @@
                                 <label for="is_dish_new2"> No </label>
                             </div> 
                     </div>
-                <div class="form-group col-md-6">
+                <div class="form-group col-md-4">
                     <p class="margin-t-20">Is Dish Featured </p> 
                     <div class="radio radio-info radio-inline">
                         <input type="radio" id="feature1" value="1" tabindex="3" name="is_featured" <?php echo (isset($item) && $item['is_featured'] == 1) ? 'checked' : ''; ?> >
@@ -200,8 +200,18 @@
                         <input type="radio" id="feature2" value="0" tabindex="4" <?php echo (!isset($item)) ? 'checked' : ''; ?>  name="is_featured" <?php echo (isset($item) && $item['is_featured'] == 0) ? 'checked' : ''; ?>>
                         <label for="feature2"> No </label>
                     </div> 
-                </div>   
-
+                </div>
+                    <div class="form-group col-md-4">
+                        <p class="margin-t-20">Is Price Show </p>
+                        <div class="radio radio-info radio-inline">
+                            <input type="radio" id="priceshow1" value="1" tabindex="3" name="is_price_show" <?php echo (isset($item) && $item['is_price_show'] == 1) ? 'checked' : ''; ?> >
+                            <label for="priceshow1"> Yes </label>
+                        </div>
+                        <div class="radio radio-inline">
+                            <input type="radio" id="priceshow2" value="0" tabindex="4" <?php echo (!isset($item)) ? 'checked' : ''; ?>  name="is_price_show" <?php echo (isset($item) && $item['is_price_show'] == 0) ? 'checked' : ''; ?>>
+                            <label for="priceshow2"> No </label>
+                        </div>
+                    </div>
                 <div class="col-md-12">
                     <div class="col-md-12">
                         <?php $noofimages=0; if(!empty($item_images)){ 

@@ -54,7 +54,6 @@ class Items extends MY_Controller
         $final['recordsFiltered'] = $final['recordsTotal'] = $this->Items_model->get_items1('count');
         $final['redraw'] = 1;
         $items = $this->Items_model->get_items1('result');
-
        // print_r( $items);die;
         $types = ($this->Items_model->sql_select(TBL_TYPES, 'type', ['where' => ['is_deleted' => 0, 'is_active' => 1]]));
         $check_type = array();
@@ -118,6 +117,7 @@ class Items extends MY_Controller
                     'price' => $this->input->post('price'),
                     'calories' => $this->input->post('calories'),
                     'is_featured' => $this->input->post('is_featured'),
+                    'is_price_show' => $this->input->post('is_price_show'),
                     'is_dish_new' => $this->input->post('is_dish_new'),
                     'description' => $this->input->post('description'),
                     'arabian_description' => $this->input->post('arabian_description'),
@@ -369,6 +369,7 @@ class Items extends MY_Controller
                             'price' => $iprice,
                             'calories' => $this->input->post('calories'),
                             'is_featured' => $this->input->post('is_featured'),
+                            'is_price_show' => $this->input->post('is_price_show'),
                             'is_dish_new' => $this->input->post('is_dish_new'),
                             'description' => $this->input->post('description'),
                             'arabian_description' => $this->input->post('arabian_description'),
@@ -671,6 +672,54 @@ class Items extends MY_Controller
                     if ($query->num_rows() > 0) {
                   foreach ($query->result() as $row) { 
                     $latesttimestamp = $row->latesttimestamp; }
+                }
+                $msg['latesttimestamp'] = $latesttimestamp;
+                header('Content-Type: application/json');
+                echo json_encode($msg);
+                exit;
+            } else {
+                $this->session->set_flashdata('error', 'Invalid request. Please try again!');
+            }
+            redirect('restaurant/items');
+        } else {
+            show_404();
+        }
+    }
+
+    public function is_price_show()
+    {
+        $id = $this->input->post('id');
+        if (is_numeric($id)) {
+            $item = $this->Items_model->get_item_detail(['id' => $id], 'id,title,is_price_show');
+            $is_price_show;
+            $msg = array();
+            if ($item) {
+                if ($item['is_price_show'] == 1) {
+                    $is_price_show = 0;
+                    $msg['status'] = 1;
+                    $msg['msg'] = htmlentities($item['title']) . ' has been not price show!';
+                } else {
+                    $is_price_show = 1;
+                    $msg['status'] = 0;
+                    $msg['msg'] = htmlentities($item['title']) . ' has been price show!';
+                }
+                $update_array = array(
+                    'is_price_show' => $is_price_show,
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+                $this->Items_model->common_insert_update('update', TBL_ITEMS, $update_array, ['id' => $id]);
+
+                $category_ids = ($this->Items_model->sql_select(TBL_ITEM_DETAILS, '*', ['where' => ['item_id' => $id]]));
+                foreach($category_ids as $row)
+                {
+                    $this->users_model->common_insert_update('update', TBL_CATEGORIES,['updated_at' => date('Y-m-d H:i:s')] , ['id' => $row['category_id']]);
+                    $this->users_model->common_insert_update('update', TBL_MENUS,['updated_at' => date('Y-m-d H:i:s')] , ['id' => $row['menu_id']]);
+                }
+                $sql = "SELECT GREATEST(MAX(IFNULL(m.created_at,0)), MAX(IFNULL(m.updated_at,0)),MAX(IFNULL(u.created_at,0)), MAX(IFNULL(u.updated_at,0)),MAX(IFNULL(s.created_at,0)), MAX(IFNULL(s.updated_at,0))) as latesttimestamp FROM menus m LEFT JOIN users as u on u.restaurant_id = m.restaurant_id LEFT JOIN settings as s on s.user_id = m.restaurant_id WHERE m.restaurant_id = '".$this->session->userdata('login_user')['id']."'";
+                $query = $this->db->query($sql);
+                if ($query->num_rows() > 0) {
+                    foreach ($query->result() as $row) {
+                        $latesttimestamp = $row->latesttimestamp; }
                 }
                 $msg['latesttimestamp'] = $latesttimestamp;
                 header('Content-Type: application/json');

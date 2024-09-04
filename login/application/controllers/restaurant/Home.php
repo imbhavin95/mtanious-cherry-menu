@@ -27,7 +27,7 @@ class Home extends My_Controller
         $data['total_categories'] = $data['categories'] = $data['total_items'] = $data['items'] = $data['type'] = 0;
         $res = $this->Settings_model->get_settings_detail(['user_id' => $this->session->userdata('login_user')['id'], 'is_deleted' => 0, 'is_active' => 1]);
         if(isset($res['rest_name']) && !empty($res['rest_name'])){
-         $data['sesurl']="https://www.cherrymenu.com/".$res['rest_name'];
+         $data['sesurl']="https://app.cherrymenu.com/".$res['rest_name'];
         }else{
             $data['sesurl']="";
         }

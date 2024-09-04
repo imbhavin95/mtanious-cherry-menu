@@ -106,7 +106,7 @@ class Items_model extends MY_Model
 
     public function get_items1($type = 'result')
     {
-        $columns = ['id', 'title', 'arabian_title', 'price','is_featured', 'is_active','created_at', 'is_deleted','calories','time'];
+        $columns = ['id', 'title', 'arabian_title', 'price','is_featured','is_active','created_at', 'is_deleted','calories','time'];
         $keyword = $this->input->get('search');
         $is_active = $this->input->get('is_active');
         $category_array = $this->input->get('category_array');

@@ -29,45 +29,17 @@
                 <div class="panel-body">
                     <form class="fieldset-form" action="" method="post" id="backgroundsetting" enctype="multipart/form-data">
                         <fieldset> 
-                          <legend><?php echo $label; ?></legend> 
+                          <legend><?php echo $label; ?></legend>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                    <?php
-                                        $required = 'required="required"';
-                                        if(isset($settings['bg_after_login']))
-                                        {
-                                            $required = '';
-                                        }
-                                    ?>
-                                    <label for="backgroundimage" class="form-label">Background Image</label><span class="require-field">*</span>
                                     <input type="hidden" name="hidden_id" id="hidden_id" value="<?php echo isset($settings) ? $settings['id'] : '' ?>" />
-                                    <input type="file" class="form-control" id="backgroundimage" tabindex="1" name="backgroundimage" <?php echo $required; ?> onchange="readURL(this);" /> <span class="help-block">Accepted formats:  png, jpg , jpeg. Max file size 4 MB</span>
-                                    
-                                    <img id="blah" src="<?php
-                                    if(isset($settings['bg_after_login']))
-                                    {
-                                        if (file_exists(DEFAULT_BACKGROUND.$settings['bg_after_login'])) 
-                                        {
-                                            echo base_url(DEFAULT_BACKGROUND . $settings['bg_after_login']);
-                                        } else 
-                                        {   
-                                            echo base_url(DEFAULT_IMG);  
-                                        }
-                                    }else
-                                    {
-                                        echo base_url(DEFAULT_IMG); 
-                                    } ?>" alt="image" width="100" height="100" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <?php
-                                        $required1 = 'required="required"';
-                                        if(isset($settings['logo']))
-                                        {
-                                            $required1 = '';
-                                        }
-                                    ?>
+<!--                                    --><?php
+//                                        $required1 = 'required="required"';
+//                                        if(isset($settings['logo']))
+//                                        {
+//                                            $required1 = '';
+//                                        }
+//                                    ?>
                                     <label for="logo" class="form-label">Logo</label><span class="require-field">*</span>
                                     <input type="file" class="form-control" id="logo" tabindex="2" name="logo" onchange="readLogo(this);" <?php echo $required1; ?> /> <span class="help-block">Accepted formats:  png, jpg , jpeg. Max file size 4 MB</span>
                                     <img id="blah1" src="<?php
@@ -205,8 +177,8 @@
             },
             messages:
             {
-                "backgroundimage":{required:"This field is required"},
-                "logo":{required:"This field is required"},
+                // "backgroundimage":{required:"This field is required"},
+                // "logo":{required:"This field is required"},
                 "currency_code" : {required:"Currency code required"},
                 "video" : {required: "This field is required"},
                 "filesize": "File size must be less than 50 MB"

@@ -47,7 +47,11 @@
             <div class="item-wrapper">
                 <div class="dz-meta-items">
                     <div class="dz-price flex-1">
-                        <div class="price"><sub>AED</sub><?php echo $item['price']; ?></div>
+                        <?php if ($item['is_price_show'] == 1) { ?>
+                            <div class="price"><sub>AED</sub><?php echo $item['price']; ?></div>
+                        <?php } else { ?>
+                            <div class="price"></div>
+                        <?php } ?>
                     </div>
                     <div class="dz-quantity">
                         <div class="dz-stepper style-3">

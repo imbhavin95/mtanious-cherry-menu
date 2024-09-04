@@ -142,6 +142,7 @@
                         <th>Arabic</th>
                         <th>Price</th>
                         <th style="text-align:center">Is Feature</th>
+                        <th style="text-align:center">Is Price Show</th>
                         <th style="text-align:center">Enable/Disable</th>
                         <th>Action</th>
                         <th>Calories</th>
@@ -248,6 +249,20 @@
                             }
                         },
                         {
+                            data: "is_price_show",
+                            visible: true,
+                            searchable: false,
+                            sortable: false,
+                            render: function (data, type, full, meta) {
+                                var price_show = '';
+                                if (full.is_price_show == 1) {
+                                    price_show = 'checked="checked"';
+                                }
+                                var status =  '<div class="checkbox margin-t-0" style="text-align: center;"><input id="priceshow'+ full.id +'" class="ispriceshow" get-data="'+ full.id +'" type="checkbox"' + price_show + '><label for="priceshow'+ full.id +'"></label></div>';
+                                return status;
+                            }
+                        },
+                        {
                             data: "is_active",
                             visible: true,
                             searchable: false,
@@ -314,6 +329,17 @@
                             visible: false,
                             render: function (data, type, full, meta) {
                                 if (full.is_featured == 1) {
+                                    return 'Yes';
+                                }else{
+                                    return 'No';
+                                }
+                            }
+                        },
+                        {
+                            data: "is_price_show",
+                            visible: false,
+                            render: function (data, type, full, meta) {
+                                if (full.is_price_show == 1) {
                                     return 'Yes';
                                 }else{
                                     return 'No';
@@ -505,7 +531,47 @@
                 }
             }
         });
-    });    
+    });
+
+    $(document).on('change', '.ispriceshow', function () {
+        //console.log('feature');
+        $('#restaurant_disable').hide();
+        $('#restaurant_enable').hide();
+        var item_id = $(this).attr('get-data');
+        $.ajax({
+            url: '<?php echo base_url("restaurant/items/is_price_show"); ?>',
+            type: "POST",
+            data: {id: item_id},
+            success: function (data) {
+                if(data.status == 1)
+                {
+                    $('#rest_disable').html(data.msg);
+                    $('#restaurant_disable').show();
+                    $("#items").dataTable().fnDestroy();
+                    bind();
+                    setTimeout(function(){ $('#restaurant_disable').hide() }, 3000);
+                    $("#latesttimestamp").attr('value', data.latesttimestamp);
+                    var latesttimestamp = $("#latesttimestamp").val();
+                    // alert(data.latesttimestamp);
+                    if(restaurantid !="" && latesttimestamp !=""){
+                        insertData(restaurantid, latesttimestamp);
+                    }
+                }else{
+                    $('#rest_enable').html(data.msg);
+                    $('#restaurant_enable').show();
+                    $("#items").dataTable().fnDestroy();
+                    bind();
+                    setTimeout(function(){ $('#restaurant_enable').hide() }, 3000);
+                    $("#latesttimestamp").attr('value', data.latesttimestamp);
+                    var latesttimestamp = $("#latesttimestamp").val();
+                    // alert(data.latesttimestamp);
+                    if(restaurantid !="" && latesttimestamp !=""){
+                        insertData(restaurantid, latesttimestamp);
+                    }
+                }
+            }
+        });
+    });
 
     function bind_categories(menuID)
     {

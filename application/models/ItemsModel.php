@@ -31,7 +31,7 @@ class ItemsModel extends MY_Model
      */
     public function get_items($type = 'result')
     {
-        $columns = ['id', 'title', 'arabian_title', 'price','is_featured', 'is_active','created_at', 'is_deleted','calories','time'];
+        $columns = ['id', 'title', 'arabian_title', 'price','is_featured','is_price_show','is_active','created_at', 'is_deleted','calories','time'];
         $keyword = $this->input->get('search');
         $is_active = $this->input->get('is_active');
         $category_array = $this->input->get('category_array');
@@ -106,7 +106,7 @@ class ItemsModel extends MY_Model
 
     public function get_items1($type = 'result')
     {
-        $columns = ['id', 'title', 'arabian_title', 'price','is_featured', 'is_active','created_at', 'is_deleted','calories','time'];
+        $columns = ['id', 'title', 'arabian_title', 'price','is_featured', 'is_price_show','is_active','created_at', 'is_deleted','calories','time'];
         $keyword = $this->input->get('search');
         $is_active = $this->input->get('is_active');
         $category_array = $this->input->get('category_array');
@@ -227,7 +227,7 @@ class ItemsModel extends MY_Model
         public function get_items_default($type = 'result',$userId='')
     {
         $this->restaurant_id=$userId;
-        $columns = ['id', 'title', 'arabian_title', 'price','is_featured', 'is_active','created_at', 'is_deleted','calories','time'];
+        $columns = ['id', 'title', 'arabian_title', 'price','is_featured', 'is_price_show','is_active','created_at', 'is_deleted','calories','time'];
         $keyword = $this->input->get('search');
         $is_active = $this->input->get('is_active');
         $category_array = $this->input->get('category_array');
@@ -394,6 +394,7 @@ class ItemsModel extends MY_Model
                                 'arabian_description' => $value['arabian_description'],
                                 'calories' => $value['calories'],
                                 'is_featured' => $value['is_featured'],
+                                'is_price_show' => $value['is_price_show'],
                                 'is_dish_new' => $value['is_dish_new'],
                                 'time' => $value['time'],
                                 'type' => $value['type'],
@@ -445,11 +446,11 @@ class ItemsModel extends MY_Model
                         if(!is_null($timestamp))
                         {
                             $timestamp = urldecode($timestamp);
-                            $new = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0  AND item.created_at > "'.$timestamp.'"  AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
+                            $new = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_price_show,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0  AND item.created_at > "'.$timestamp.'"  AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
                             if(!empty($new))
                             {
-                                $updated = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0 AND item.created_at < "'.$timestamp.'" AND item.updated_at != "" AND item.updated_at >= "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
-                                $deleted = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 1 AND item.created_at < "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
+                                $updated = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_price_show,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0 AND item.created_at < "'.$timestamp.'" AND item.updated_at != "" AND item.updated_at >= "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
+                                $deleted = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_price_show,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 1 AND item.created_at < "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
                                 
                                 $deleted_item = $this->db->query('SELECT * from  '.TBL_DELETE_ITEMS.' where is_deleted = 1 AND category_id = '.$categoryId.' AND created_at >= "'.$timestamp.'"')->result_array();
                                 $new_item = $this->db->query('SELECT * from  '.TBL_NEW_ITEMS.' where category_id = '.$categoryId.' AND created_at >= "'.$timestamp.'"')->result_array();
@@ -468,6 +469,7 @@ class ItemsModel extends MY_Model
                                         'arabian_description' => $get_items['arabian_description'],
                                         'calories' => $get_items['calories'],
                                         'is_featured' => $get_items['is_featured'],
+                                        'is_price_show' => $get_items['is_price_show'],
                                         'is_dish_new' => $get_items['is_dish_new'],
                                         'time' => $get_items['time'],
                                         'type' => $get_items['type'],
@@ -494,6 +496,7 @@ class ItemsModel extends MY_Model
                                         'arabian_description' => $get_items['arabian_description'],
                                         'calories' => $get_items['calories'],
                                         'is_featured' => $get_items['is_featured'],
+                                        'is_price_show' => $get_items['is_price_show'],
                                         'is_dish_new' => $get_items['is_dish_new'],
                                         'time' => $get_items['time'],
                                         'type' => $get_items['type'],
@@ -508,8 +511,8 @@ class ItemsModel extends MY_Model
                                 }
                             }else
                             {
-                                $updated = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0 AND item.updated_at != " " AND item.updated_at >= "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
-                                $deleted = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 1 AND item.updated_at >= "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
+                                $updated = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_price_show,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0 AND item.updated_at != " " AND item.updated_at >= "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
+                                $deleted = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_price_show,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 1 AND item.updated_at >= "'.$timestamp.'" AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
                                 $deleted_item = $this->db->query('SELECT * from  '.TBL_DELETE_ITEMS.' where is_deleted = 1 AND category_id = '.$categoryId.' AND created_at >= "'.$timestamp.'"')->result_array();
                                 if(!empty($deleted_item))
                                 {
@@ -525,6 +528,7 @@ class ItemsModel extends MY_Model
                                         'arabian_description' => $get_items['arabian_description'],
                                         'calories' => $get_items['calories'],
                                         'is_featured' => $get_items['is_featured'],
+                                        'is_price_show' => $get_items['is_price_show'],
                                         'is_dish_new' => $get_items['is_dish_new'],
                                         'time' => $get_items['time'],
                                         'type' => $get_items['type'],
@@ -540,7 +544,7 @@ class ItemsModel extends MY_Model
                             } 
                         }else
                         {
-                            $new = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0 and item.is_active=1 AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
+                            $new = $this->db->query('SELECT DISTINCT item.id,item.order,item.title,item.arabian_title,item.price,item.description,item.arabian_description,item.calories,item.is_featured,item.is_price_show,item.is_dish_new,item.time,item.type,item.is_active,item.is_deleted,item.created_at,item.updated_at,item_d.category_id FROM '.TBL_ITEMS.' as item,'.TBL_ITEM_DETAILS.' as item_d ,'.TBL_CATEGORIES.' as cate WHERE item.id = item_d.item_id AND cate.id = item_d.category_id AND item.is_deleted = 0 and item.is_active=1 AND item_d.category_id = '.$categoryId.' ORDER BY item.order ASC')->result_array();
                             $updated = [];
                             $deleted = [];
                         }
@@ -569,6 +573,7 @@ class ItemsModel extends MY_Model
                                 'arabian_description' => $rows['arabian_description'],
                                 'calories' => $rows['calories'],
                                 'is_featured' => $rows['is_featured'],
+                                'is_price_show' => $rows['is_price_show'],
                                 'is_dish_new' => $rows['is_dish_new'],
                                 'time' => $rows['time'],
                                 'type' => $rows['type'],
@@ -613,6 +618,7 @@ class ItemsModel extends MY_Model
                                 'arabian_description' => $rows['arabian_description'],
                                 'calories' => $rows['calories'],
                                 'is_featured' => $rows['is_featured'],
+                                'is_price_show' => $rows['is_price_show'],
                                 'is_dish_new' => $rows['is_dish_new'],
                                 'time' => $rows['time'],
                                 'type' => $rows['type'],
@@ -659,6 +665,7 @@ class ItemsModel extends MY_Model
                                 'arabian_description' => $rows['arabian_description'],
                                 'calories' => $rows['calories'],
                                 'is_featured' => $rows['is_featured'],
+                                'is_price_show' => $rows['is_price_show'],
                                 'is_dish_new' => $rows['is_dish_new'],
                                 'time' => $rows['time'],
                                 'type' => $rows['type'],

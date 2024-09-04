@@ -56,7 +56,11 @@
                                                             </h6>
                                                         </div>
                                                         <ul class="dz-meta">
+                                                            <?php if($subItem['is_price_show'] == 1){?>
                                                             <li class="dz-price flex-1"><?php echo 'AED ' . $subItem['price'] ?></li>
+                                                            <?php }else{ ?>
+                                                                <li class="dz-price flex-1"></li>
+                                                           <?php  } ?>
                                                             <li>
                                                                 <a href="<?php echo $itemlink; ?>"
                                                                    class=" btn rounded-xl dz-buy-btn">
