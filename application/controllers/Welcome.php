@@ -14,7 +14,8 @@ class Welcome extends CI_Controller
 
     public function index()
     {
-        $this->load->view('welcome_message');
+        redirect('https://cherrymenu.com');
+        // $this->load->view('welcome_message');
     }
 
     public function tony_test()
@@ -70,7 +71,7 @@ class Welcome extends CI_Controller
                     $data['item_data'] = @$this->ItemsModel->get_items_bycategory($restaurantId);
                     $data['main_langid'] = @$urlVariablesArray[1];
 
-                    if(!$data['rest_image'] || !$data['restid'] || !$data['item_data']){
+                    if(!$data['restid'] || !$data['item_data']){
                         $data['message']='Either Menu or Category or Items are disabled. Please check and come back';
                         $this->load->view('restaurants/include/header', ['data' => $data]);
                         $this->load->view('restaurants/error-general', $data);
@@ -105,7 +106,7 @@ class Welcome extends CI_Controller
                 $data['item_data'] = $this->ItemsModel->get_items_bycategory($restaurantId);
                 $data['main_langid'] = @$urlVariablesArray[1];
 
-                if(!$data['rest_image'] || !$data['restid'] || !$data['item_data']){
+                if(!$data['restid'] || !$data['item_data']){
                     $data['message']='Either Menu or Category or Items are disabled. Please check and come back';
                     $this->load->view('restaurants/include/header', ['data' =>$data]);
                     $this->load->view('restaurants/error-general', $data);
@@ -198,25 +199,30 @@ class Welcome extends CI_Controller
 
 	public function features()
 	{
-		$this->load->view('features');
+        redirect('https://cherrymenu.com/features');
+		// $this->load->view('features');
 	}
 
 	public function pricing()
 	{
-		$this->load->view('pricing');
+        redirect('https://cherrymenu.com/pricing');
+        // $this->load->view('pricing');
 	}
 	public function PrivacyPolicy()
 	{
-		$this->load->view('Privacy-Policy');
+        redirect('https://cherrymenu.com/privacy-policy');
+		// $this->load->view('Privacy-Policy');
 	}
 	public function terms_of_services()
 	{
-		$this->load->view('terms-of-services');
+        redirect('https://cherrymenu.com/terms-and-conditions');
+		// $this->load->view('terms-of-services');
 	}
 
 	public function contact()
 	{   //echo "string";
-		$this->load->view('contact');
+        redirect('https://cherrymenu.com/contact');
+		// $this->load->view('contact');
 	}
 
 	public function contact_submit(){
