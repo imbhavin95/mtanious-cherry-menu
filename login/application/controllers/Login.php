@@ -111,6 +111,7 @@ class Login extends MY_Controller
      */
     public function login_validation()
     {
+
         $result = $this->users_model->get_user_detail(['email' => trim($this->input->post('email')), 'is_deleted' => 0]);
         if ($result) {
             if($result['role'] === ADMIN || $result['role'] === RESTAURANT || $result['role'] === SUB_ADMIN)
@@ -152,11 +153,17 @@ class Login extends MY_Controller
 
                     	$query="SELECT * FROM `package_details` where  `restaurant_id` = '".$id."' and status='activate' and package_id!='3'";
                     	$resultdata1=$this->users_model->run_manual_query($query);
+
+
                     	if($resultdata1)
                     	{
                              if(isset($_POST['remember_me']) && !empty($_POST['remember_me'])){
                           $email = $this->encryption->encrypt($this->input->post('email'));
-                          $encoded_email = set_cookie(REMEMBER_ME_COOKIE_NAME,$email,172800); 
+                          $password = $this->encryption->encrypt($this->input->post('password'));
+
+                          $encoded_email = set_cookie('remember_me_email',$email,172800);
+                          $encoded_ck = set_cookie('remember_me_ck',true,172800);
+                          $encoded_email = set_cookie('remember_me_password',$password,172800);
                             }
                             
                           $this->session->set_userdata('login_user', $result);
@@ -177,10 +184,13 @@ class Login extends MY_Controller
                          }
                      }
 
-                           if(isset($_POST['remember_me']) && !empty($_POST['remember_me'])){
-                          $email = $this->encryption->encrypt($this->input->post('email'));
-                          $encoded_email = set_cookie(REMEMBER_ME_COOKIE_NAME,$email,172800); 
-                            }
+                    if (isset($_POST['remember_me']) && !empty($_POST['remember_me'])) {
+                        $email = $this->encryption->encrypt($this->input->post('email'));
+                        $password = $this->encryption->encrypt($this->input->post('password'));
+                        $encoded_ck = set_cookie('remember_me_ck',true,172800);
+                        $encoded_email = set_cookie('remember_me_email', $this->input->post('email'), 172800);
+                        $encoded_password = set_cookie('remember_me_password', $this->input->post('password'), 172800);
+                    }
                             
 
                    $this->session->set_userdata('login_user', $result);
