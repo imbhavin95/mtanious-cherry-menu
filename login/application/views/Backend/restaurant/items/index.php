@@ -150,7 +150,7 @@ if (is_sub_admin()) {
                 }
                 ?> -->
             </select>
-            <button class="btn btn-default" id="priceShow">Price</button>
+            <button class="btn btn-default" id="priceShow">Price Show</button>
             <button class="btn btn-default" id="hide_items">Hide disabled items</button>
             <?php if ($item_limit < $this->session->userdata('login_user')['items_limit']) { ?>
                 <a href="<?php echo base_url('restaurant/items/add'); ?>" class="btn btn-default">Add New</a>
