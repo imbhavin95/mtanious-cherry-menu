@@ -130,6 +130,9 @@ if ($_SERVER['HTTP_HOST'] == 'cherrymenu.com') {
             if ($this->session->flashdata('error')) {
                 echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
             }
+
+            $decrypted_password = $this->encryption->decrypt(get_cookie('remember_me_info'));
+
             ?>
             <div class="group">
                 <input type="text" name="email" id="email" class="form-control" placeholder="Username"
@@ -138,7 +141,7 @@ if ($_SERVER['HTTP_HOST'] == 'cherrymenu.com') {
             </div>
             <div class="group">
                 <input type="password" name="password" id="password" class="form-control" placeholder="Password"
-                       value="<?php echo get_cookie('remember_me_password'); ?>">
+                       value="<?php echo $decrypted_password ?>">
                 <i class="fa fa-key"></i>
             </div>
             <div class="checkbox checkbox-primary">

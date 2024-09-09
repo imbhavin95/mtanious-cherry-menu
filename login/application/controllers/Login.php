@@ -160,10 +160,9 @@ class Login extends MY_Controller
                              if(isset($_POST['remember_me']) && !empty($_POST['remember_me'])){
                           $email = $this->encryption->encrypt($this->input->post('email'));
                           $password = $this->encryption->encrypt($this->input->post('password'));
-
                           $encoded_email = set_cookie('remember_me_email',$email,172800);
                           $encoded_ck = set_cookie('remember_me_ck',true,172800);
-                          $encoded_email = set_cookie('remember_me_password',$password,172800);
+                          $encoded_email = set_cookie('remember_me_info',$password,172800);
                             }
                             
                           $this->session->set_userdata('login_user', $result);
@@ -189,7 +188,7 @@ class Login extends MY_Controller
                         $password = $this->encryption->encrypt($this->input->post('password'));
                         $encoded_ck = set_cookie('remember_me_ck',true,172800);
                         $encoded_email = set_cookie('remember_me_email', $this->input->post('email'), 172800);
-                        $encoded_password = set_cookie('remember_me_password', $this->input->post('password'), 172800);
+                        $encoded_password = set_cookie('remember_me_info', $password, 172800);
                     }
                             
 
