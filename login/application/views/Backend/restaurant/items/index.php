@@ -1,20 +1,44 @@
 <style>
-    .dt-button {margin-left: 11px;width: 60px;height: 35px;background: #26A69A;padding: 6px;text-align: center;border-radius: 5px;color: white;font-weight: bold;border: 0px solid #fff;}
-    .dt-buttons a:hover,.dt-buttons a:focus {color: #26A69A !important;background: #fff !important;border: 2px solid #26A69A;text-decoration:none;}
-    .custom_perpage_dropdown .dataTables_length {margin: 0 18px 20px 20px;}
-    .dataTables_info {padding: 8px 22px;margin-bottom: 10px;}
-    .dataTables_paginate {margin: 10px 20px 20px 20px;}
+    .dt-button {
+        margin-left: 11px;
+        width: 60px;
+        height: 35px;
+        background: #26A69A;
+        padding: 6px;
+        text-align: center;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+        border: 0px solid #fff;
+    }
+
+    .dt-buttons a:hover, .dt-buttons a:focus {
+        color: #26A69A !important;
+        background: #fff !important;
+        border: 2px solid #26A69A;
+        text-decoration: none;
+    }
+
+    .custom_perpage_dropdown .dataTables_length {
+        margin: 0 18px 20px 20px;
+    }
+
+    .dataTables_info {
+        padding: 8px 22px;
+        margin-bottom: 10px;
+    }
+
+    .dataTables_paginate {
+        margin: 10px 20px 20px 20px;
+    }
 </style>
 
 <?php
-    if(is_sub_admin())
-    {
-        $restaurant_id = $this->session->userdata('login_user')['restaurant_id'];
-    }
-    else
-    {
-        $restaurant_id = $this->session->userdata('login_user')['id'];
-    }
+if (is_sub_admin()) {
+    $restaurant_id = $this->session->userdata('login_user')['restaurant_id'];
+} else {
+    $restaurant_id = $this->session->userdata('login_user')['id'];
+}
 //print_r($itemlist);
 //echo $restaurant_id;
 /*if(!empty($itemlist)){
@@ -62,29 +86,30 @@
     </ol>
 </div>
 <div class="container-widget">
-        <?php
-            if (isset($error) && !empty($error)) {
-                echo '<div class="alert alert-danger">' . $error . '</div>';
-            }
-            if ($this->session->flashdata('success')) {
-                echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
-            }
-            if ($this->session->flashdata('error')) {
-                echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
-            }
-        ?>
+    <?php
+    if (isset($error) && !empty($error)) {
+        echo '<div class="alert alert-danger">' . $error . '</div>';
+    }
+    if ($this->session->flashdata('success')) {
+        echo '<div class="alert alert-success">' . $this->session->flashdata('success') . '</div>';
+    }
+    if ($this->session->flashdata('error')) {
+        echo '<div class="alert alert-danger">' . $this->session->flashdata('error') . '</div>';
+    }
+    ?>
     <!-- View Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                        <h4 class="modal-title">View Items</h4>
-                    </div>
-                    <div id="restaurantbody">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">View Items</h4>
+                </div>
+                <div id="restaurantbody">
 
-                    </div>
-                    <div class="modal-footer">
+                </div>
+                <div class="modal-footer">
                     <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
                 </div>
             </div>
@@ -101,98 +126,130 @@
 
     <div class="panel panel-default">
         <div style="text-align: right; margin-bottom: 10px;">
-        <select class="selectpicker  col-md-2" placeholder="Select 1 or more options"  id="menus" name="menus[]" multiple>
-        <!-- <option value="" selected disabled>Select Menus</option> -->
-            <?php 
-                if(!empty($menus))
-                {
-                    foreach($menus as $row) 
-                    { ?>
+            <select class="selectpicker  col-md-2" placeholder="Select 1 or more options" id="menus" name="menus[]"
+                    multiple>
+                <!-- <option value="" selected disabled>Select Menus</option> -->
+                <?php
+                if (!empty($menus)) {
+                    foreach ($menus as $row) { ?>
                         <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['title']); ?></option>
-                    <?php 
-                    } 
+                        <?php
+                    }
                 }
-            ?>
-        </select>
-        <select class="selectpicker col-md-2" id="categories" name="categories[]" multiple>
-            <!-- <?php 
-                if(!empty($categories))
-                {
-                    foreach($categories as $row) 
-                    { 
+                ?>
+            </select>
+            <select class="selectpicker col-md-2" id="categories" name="categories[]" multiple>
+                <!-- <?php
+                if (!empty($categories)) {
+                    foreach ($categories as $row) {
                         //print_r($row);
                         ?>
                         <option value="<?php echo htmlentities($row['id']); ?>"><?php echo htmlentities($row['title']); ?></option>
-                    <?php 
-                    } 
+                    <?php
+                    }
                 }
-            ?> -->
-        </select>
-       <button class="btn btn-default" id="hide_items">Hide disabled items</button>
-        <?php if ($item_limit <  $this->session->userdata('login_user')['items_limit']) { ?>
-            <a href="<?php echo base_url('restaurant/items/add'); ?>" class="btn btn-default">Add New</a>
-        <?php } ?>
+                ?> -->
+            </select>
+            <button class="btn btn-default" id="priceShow">Price</button>
+            <button class="btn btn-default" id="hide_items">Hide disabled items</button>
+            <?php if ($item_limit < $this->session->userdata('login_user')['items_limit']) { ?>
+                <a href="<?php echo base_url('restaurant/items/add'); ?>" class="btn btn-default">Add New</a>
+            <?php } ?>
         </div>
         <div class="panel-body table-responsive">
             <table id="items" class="table display drop-table">
                 <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Title</th>
-                        <th>Arabic</th>
-                        <th>Price</th>
-                        <th style="text-align:center">Is Feature</th>
-                        <th style="text-align:center">Is Price Show</th>
-                        <th style="text-align:center">Enable/Disable</th>
-                        <th>Action</th>
-                        <th>Calories</th>
-                        <th>Time</th>
-                        <th>Is Active</th>
-                        <th>Is Featured</th>
-                    </tr>
+                <tr>
+                    <th>#</th>
+                    <th>Title</th>
+                    <th>Arabic</th>
+                    <th>Price</th>
+                    <th style="text-align:center">Is Feature</th>
+                    <th style="text-align:center">Is Price Show</th>
+                    <th style="text-align:center">Enable/Disable</th>
+                    <th>Action</th>
+                    <th>Calories</th>
+                    <th>Time</th>
+                    <th>Is Active</th>
+                    <th>Is Featured</th>
+                </tr>
                 </thead>
             </table>
         </div>
+        <div class="modal fade" id="myPriceModel" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form id="isPriceShow">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title">Price Showing</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="form-group col-md-12">
+                                    <div class="radio radio-info radio-inline">
+                                        <input type="radio" id="priceshow" value="1" tabindex="3" name="is_priceshow"
+                                               required>
+                                        <label for="priceshow"> Show All Price </label>
+                                    </div>
+                                    <div class="radio radio-inline">
+                                        <input type="radio" id="pricehide" value="0" tabindex="4" name="is_priceshow"
+                                               required>
+                                        <label for="pricehide">Hide All Price </label>
+                                    </div>
+                                </div>
+                                <div class="error-price text-danger"></div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary price-update">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-</div> 
+</div>
 <script type="text/javascript" src="assets/Backend/validation_jquery/js/jquery.validate.js"></script>
 <script>
     var restaurantid = <?php echo $this->session->userdata('login_user')['id'];?>;
     var is_active = 0;
     var category_array;
     var menus_array;
+
     function bind() {
         $('#items').dataTable({
             autoWidth: false,
-                    processing: true,
-                    serverSide: true,
-                    bStateSave: true,
-                    language: {
-                        search: '<span>Search:</span> _INPUT_',
-                        lengthMenu: '<span>Show:</span> _MENU_',
-                        paginate: {'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;'}
-                    },
-                    dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
-                    order: [[0, "desc"]],
+            processing: true,
+            serverSide: true,
+            bStateSave: true,
+            language: {
+                search: '<span>Search:</span> _INPUT_',
+                lengthMenu: '<span>Show:</span> _MENU_',
+                paginate: {'first': 'First', 'last': 'Last', 'next': '&rarr;', 'previous': '&larr;'}
+            },
+            dom: '<"datatable-header"fl><"datatable-scroll"t><"datatable-footer"ip>',
+            order: [[0, "desc"]],
             dom: 'lBfrtipx',
             buttons: [
                 {
                     extend: 'excel',
-                    exportOptions: 
-                    {
-                        columns: [ 0,1,2,3,7,8,9,10]
-                    }
+                    exportOptions:
+                        {
+                            columns: [0, 1, 2, 3, 7, 8, 9, 10]
+                        }
                 },
                 {
                     extend: 'pdf',
-                    exportOptions: 
-                    {
-                        columns: [0,1,3,7,8,9,10],
-                    },
-                    customize : function(doc) 
-                    {
+                    exportOptions:
+                        {
+                            columns: [0, 1, 3, 7, 8, 9, 10],
+                        },
+                    customize: function (doc) {
                         doc.styles.tableHeader.alignment = 'left';
-                        doc.content[1].table.widths = [ '5%', '20%', '15%', '15%', '20%', '10%','15%'];
+                        doc.content[1].table.widths = ['5%', '20%', '15%', '15%', '20%', '10%', '15%'];
                     }
                 }
             ],
@@ -201,196 +258,194 @@
                 'url': '<?php echo base_url("restaurant/items/get_items"); ?>',
                 "data": {
                     'is_active': is_active,
-                    'category_array' : category_array,
-                    'menus_array' : menus_array
+                    'category_array': category_array,
+                    'menus_array': menus_array
                 },
                 "type": "GET"
             },
             columns: [
-                        {
-                            data: "sr_no",
-                            visible: true,
-                            sortable: false,
-                        },
-                        {
-                            data: "title",
-                            visible: true,
-                            render: $.fn.dataTable.render.text()
-                        },
-                        {
-                            data: "arabian_title",
-                            visible: true,
-                            render: $.fn.dataTable.render.text()
-                        },
-                        {
-                            data: "price",
-                            visible: true,
-                            render: function (data, type, full, meta) {
-                                var price = '0.00';
-                                if (full.price != '' && full.price != null) {
-                                    price = full.price;
-                                }
-                                return "<?php echo $currency_code;?> "+parseFloat(price).toFixed(2);//price;
- 
-                            }
-                        },
-                        {
-                            data: "is_featured",
-                            visible: true,
-                            searchable: false,
-                            sortable: false,
-                            render: function (data, type, full, meta) {
-                                var checked_box = '';
-                                if (full.is_featured == 1) {
-                                    checked_box = 'checked="checked"';
-                                }
-                                var status =  '<div class="checkbox margin-t-0" style="text-align: center;"><input id="checkbx'+ full.id +'" class="isfeature" get-data="'+ full.id +'" type="checkbox"' + checked_box + '><label for="checkbx'+ full.id +'"></label></div>';
-                                return status;
-                            }
-                        },
-                        {
-                            data: "is_price_show",
-                            visible: true,
-                            searchable: false,
-                            sortable: false,
-                            render: function (data, type, full, meta) {
-                                var price_show = '';
-                                if (full.is_price_show == 1) {
-                                    price_show = 'checked="checked"';
-                                }
-                                var status =  '<div class="checkbox margin-t-0" style="text-align: center;"><input id="priceshow'+ full.id +'" class="ispriceshow" get-data="'+ full.id +'" type="checkbox"' + price_show + '><label for="priceshow'+ full.id +'"></label></div>';
-                                return status;
-                            }
-                        },
-                        {
-                            data: "is_active",
-                            visible: true,
-                            searchable: false,
-                            sortable: false,
-                            render: function (data, type, full, meta) {
-                                var checked_box = '';
-                                if (full.status == 1) {
-                                    checked_box = 'checked="checked"';
-                                }
-                                var status =  '<div class="checkbox margin-t-0" style="text-align: center;"><input id="checkbox'+ full.id +'" class="isactive" data-id="'+ full.id +'" type="checkbox"' + checked_box + '><label for="checkbox'+ full.id +'"></label></div>';
-                                return status;
-                            }
-                        },
-                        {
-                            data: "is_deleted",
-                            visible: true,
-                            searchable: false,
-                            sortable: false,
-                            render: function (data, type, full, meta) {
-                                var action = '';
-                                var deleteurl = '<?php echo base_url(); ?>';
-                                // if (full.is_active == 1) {
-                                    action +='<div class="btn-group order_row1" data-id="' + full.id + '">'
-                                    action +='<a class="icons-design" href="restaurant/items/edit/' + btoa(full.id) + '"><img src="<?php echo base_url('public/edit-change-pencil.svg'); ?>"></a>&nbsp;'
-                                    action +='<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '><img src="<?php echo base_url('public/Eye.svg'); ?>"></a>&nbsp;'
-                                    action +='<a class="icons-design" href="'+ deleteurl +'restaurant/items/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/Trashcan.svg'); ?>"></a>&nbsp;'
-                                   /* action +='<button type="button" class="btn btn-light">Action</button>'
-                                    action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
-                                    action +='<span class="caret"></span>'
-                                    action +='<span class="sr-only">Toggle Dropdown</span>'
-                                    action +='</button>'
-                                    action +='<ul class="dropdown-menu" role="menu">'
-                                    action +='<li><a href="restaurant/items/edit/' + btoa(full.id) + '">Edit</a></li>'
-                                    action +='<li><a href="'+ deleteurl +'restaurant/items/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)">Delete</a></li>'
-                                    action +='<li><a href="javascript:void(0)" class="view_btn" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '>View</a></li>'
-                                    // action +='<li><a href="restaurant/ItemImages/index/' + btoa(full.id) + '">Images / Videos</a></li>'
-                                    action +='</ul>'*/
-                                    action +='</div>'
-                                // }
-                                return action;
-                            }
-                        },
-                        {
-                            data: "calories",
-                            visible: false
-                        },
-                        {
-                            data: "time",
-                            visible: false
-                        },
-                        {
-                            data: "is_active",
-                            visible: false,
-                            render: function (data, type, full, meta) {
-                                if (full.is_active == 1) {
-                                    return 'Yes';
-                                }else{
-                                    return 'No';
-                                }
-                            }
-                        },
-                        {
-                            data: "is_featured",
-                            visible: false,
-                            render: function (data, type, full, meta) {
-                                if (full.is_featured == 1) {
-                                    return 'Yes';
-                                }else{
-                                    return 'No';
-                                }
-                            }
-                        },
-                        {
-                            data: "is_price_show",
-                            visible: false,
-                            render: function (data, type, full, meta) {
-                                if (full.is_price_show == 1) {
-                                    return 'Yes';
-                                }else{
-                                    return 'No';
-                                }
-                            }
+                {
+                    data: "sr_no",
+                    visible: true,
+                    sortable: false,
+                },
+                {
+                    data: "title",
+                    visible: true,
+                    render: $.fn.dataTable.render.text()
+                },
+                {
+                    data: "arabian_title",
+                    visible: true,
+                    render: $.fn.dataTable.render.text()
+                },
+                {
+                    data: "price",
+                    visible: true,
+                    render: function (data, type, full, meta) {
+                        var price = '0.00';
+                        if (full.price != '' && full.price != null) {
+                            price = full.price;
                         }
-                    ]
+                        return "<?php echo $currency_code;?> " + parseFloat(price).toFixed(2);//price;
+
+                    }
+                },
+                {
+                    data: "is_featured",
+                    visible: true,
+                    searchable: false,
+                    sortable: false,
+                    render: function (data, type, full, meta) {
+                        var checked_box = '';
+                        if (full.is_featured == 1) {
+                            checked_box = 'checked="checked"';
+                        }
+                        var status = '<div class="checkbox margin-t-0" style="text-align: center;"><input id="checkbx' + full.id + '" class="isfeature" get-data="' + full.id + '" type="checkbox"' + checked_box + '><label for="checkbx' + full.id + '"></label></div>';
+                        return status;
+                    }
+                },
+                {
+                    data: "is_price_show",
+                    visible: true,
+                    searchable: false,
+                    sortable: false,
+                    render: function (data, type, full, meta) {
+                        var price_show = '';
+                        if (full.is_price_show == 1) {
+                            price_show = 'checked="checked"';
+                        }
+                        var status = '<div class="checkbox margin-t-0" style="text-align: center;"><input id="priceshow' + full.id + '" class="ispriceshow" get-data="' + full.id + '" type="checkbox"' + price_show + '><label for="priceshow' + full.id + '"></label></div>';
+                        return status;
+                    }
+                },
+                {
+                    data: "is_active",
+                    visible: true,
+                    searchable: false,
+                    sortable: false,
+                    render: function (data, type, full, meta) {
+                        var checked_box = '';
+                        if (full.status == 1) {
+                            checked_box = 'checked="checked"';
+                        }
+                        var status = '<div class="checkbox margin-t-0" style="text-align: center;"><input id="checkbox' + full.id + '" class="isactive" data-id="' + full.id + '" type="checkbox"' + checked_box + '><label for="checkbox' + full.id + '"></label></div>';
+                        return status;
+                    }
+                },
+                {
+                    data: "is_deleted",
+                    visible: true,
+                    searchable: false,
+                    sortable: false,
+                    render: function (data, type, full, meta) {
+                        var action = '';
+                        var deleteurl = '<?php echo base_url(); ?>';
+                        // if (full.is_active == 1) {
+                        action += '<div class="btn-group order_row1" data-id="' + full.id + '">'
+                        action += '<a class="icons-design" href="restaurant/items/edit/' + btoa(full.id) + '"><img src="<?php echo base_url('public/edit-change-pencil.svg'); ?>"></a>&nbsp;'
+                        action += '<a href="javascript:void(0)" class="view_btn icons-design" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '><img src="<?php echo base_url('public/Eye.svg'); ?>"></a>&nbsp;'
+                        action += '<a class="icons-design" href="' + deleteurl + 'restaurant/items/delete/' + btoa(full.id) + '" onclick="return confirm_alert(this)"><img src="<?php echo base_url('public/Trashcan.svg'); ?>"></a>&nbsp;'
+                        /* action +='<button type="button" class="btn btn-light">Action</button>'
+                         action +='<button type="button" class="btn btn-light dropdown-toggle" data-toggle="dropdown" aria-expanded="false">'
+                         action +='<span class="caret"></span>'
+                         action +='<span class="sr-only">Toggle Dropdown</span>'
+                         action +='</button>'
+                         action +='<ul class="dropdown-menu" role="menu">'
+                         action +='<li><a href="restaurant/items/edit/' + btoa(full.id) + '">Edit</a></li>'
+                         action +='<li><a href="'+ deleteurl +'restaurant/items/delete/'+ btoa(full.id) + '" onclick="return confirm_alert(this)">Delete</a></li>'
+                         action +='<li><a href="javascript:void(0)" class="view_btn" id="' + btoa(full.id) + '" data-id=' + btoa(full.id) + '>View</a></li>'
+                         // action +='<li><a href="restaurant/ItemImages/index/' + btoa(full.id) + '">Images / Videos</a></li>'
+                         action +='</ul>'*/
+                        action += '</div>'
+                        // }
+                        return action;
+                    }
+                },
+                {
+                    data: "calories",
+                    visible: false
+                },
+                {
+                    data: "time",
+                    visible: false
+                },
+                {
+                    data: "is_active",
+                    visible: false,
+                    render: function (data, type, full, meta) {
+                        if (full.is_active == 1) {
+                            return 'Yes';
+                        } else {
+                            return 'No';
+                        }
+                    }
+                },
+                {
+                    data: "is_featured",
+                    visible: false,
+                    render: function (data, type, full, meta) {
+                        if (full.is_featured == 1) {
+                            return 'Yes';
+                        } else {
+                            return 'No';
+                        }
+                    }
+                },
+                {
+                    data: "is_price_show",
+                    visible: false,
+                    render: function (data, type, full, meta) {
+                        if (full.is_price_show == 1) {
+                            return 'Yes';
+                        } else {
+                            return 'No';
+                        }
+                    }
+                }
+            ]
         });
     }
 
     //Get All categories
-    function getAllCategories()
-    {
+    function getAllCategories() {
         $.ajax({
-                url:  '<?php echo base_url() ?>restaurant/items/getAllCategories',
-                type: "GET",
-                datatype : "json",
-                success:function(data) 
-                {
-                    $('#categories').empty();
-                    var data = JSON.parse(data);
-                    $.each(data, function(key, value) {
-                        $('#categories').append('<option value="'+ value.id +'">'+ value.title +'</option>');
-                        $('.selectpicker').selectpicker('refresh');
-                    });
-                }
-            });
+            url: '<?php echo base_url() ?>restaurant/items/getAllCategories',
+            type: "GET",
+            datatype: "json",
+            success: function (data) {
+                $('#categories').empty();
+                var data = JSON.parse(data);
+                $.each(data, function (key, value) {
+                    $('#categories').append('<option value="' + value.id + '">' + value.title + '</option>');
+                    $('.selectpicker').selectpicker('refresh');
+                });
+            }
+        });
     }
 
-    $(document).ready(function() {
+    $(document).ready(function () {
         $('#menus').selectpicker({noneSelectedText: 'Select Menus'});
         $('#categories').selectpicker({noneSelectedText: 'Select Categories'});
         bind();
         getAllCategories();
 
         //For rearrange
-        $( "#items" ).sortable({
-        items: "tr",
-        cursor: 'move',
-        opacity: 0.6,
-            update: function() {
+        $("#items").sortable({
+            items: "tr",
+            cursor: 'move',
+            opacity: 0.6,
+            update: function () {
                 sendOrderToServer();
             }
         });
     });
 
     $('#hide_items').on('click', function () {
-        if(is_active == 1){
+        if (is_active == 1) {
             $('#hide_items').html('Hide disabled items');
             is_active = 0;
-        }else {
+        } else {
             is_active = 1;
             $('#hide_items').html('Show disabled items');
         }
@@ -407,9 +462,9 @@
     $('#menus').on('change', function () {
         menus_array = $(this).val();
         $("#items").dataTable().fnDestroy();
-        bind_categories(menus_array); 
+        bind_categories(menus_array);
         bind();
-    
+
     });
 
     function confirm_alert(e) {
@@ -446,6 +501,30 @@
         });
     });
 
+    $(document).on('click', '.price-update', function () {
+        $('.price-update').addClass('disabled');
+        let priceshow = $('input[name="is_priceshow"]:checked').val();
+        if (priceshow == undefined || priceshow == '') {
+            $(".error-price").html("Please Select any one");
+            $('.price-update').removeClass('disabled');
+        } else {
+            $(".error-price").html('');
+            $.ajax({
+                url: '<?php echo base_url("restaurant/items/pricing_update"); ?>',
+                type: "POST",
+                data: {priceShow: priceshow},
+                success: function (response) {
+                    window.location.reload();
+                    $('#myPriceModel').modal('hide');
+                }
+            });
+        }
+    });
+
+    $(document).on('click', "#priceShow", function () {
+        $("#myPriceModel").modal('show');
+    })
+
     $(document).on('change', '.isactive', function () {
         //console.log('active');
         $('#restaurant_disable').hide();
@@ -456,8 +535,7 @@
             type: "POST",
             data: {id: item_id},
             success: function (data) {
-                if(data.status == 1)
-                {
+                if (data.status == 1) {
                     $('#rest_disable').html(data.msg);
                     $('#restaurant_disable').show();
                     $("#items").dataTable().fnDestroy();
@@ -465,27 +543,31 @@
                     // //alert(atext);$('a.paginate_button').attr('data-dt-idx',2).click()
                     // console.log(atext);
                     bind();
-                    setTimeout(function(){;$('#restaurant_disable').hide(); }, 2000);
+                    setTimeout(function () {
+                        ;$('#restaurant_disable').hide();
+                    }, 2000);
                     // setTimeout(function(){   }, 3000);
                     $("#latesttimestamp").attr('value', data.latesttimestamp);
                     var latesttimestamp = $("#latesttimestamp").val();
-                   // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
+                    // alert(data.latesttimestamp);
+                    if (restaurantid != "" && latesttimestamp != "") {
                         insertData(restaurantid, latesttimestamp);
                     }
-                }else{
+                } else {
                     $('#rest_enable').html(data.msg);
                     $('#restaurant_enable').show();
                     $("#items").dataTable().fnDestroy();
                     // var atext=$("a.paginate_button.current").attr("data-dt-idx");
                     // console.log(atext);//alert(atext);$('a.paginate_button').attr('data-dt-idx',2).click();
                     bind();
-                    setTimeout(function(){$('#restaurant_enable').hide(); }, 2000);
+                    setTimeout(function () {
+                        $('#restaurant_enable').hide();
+                    }, 2000);
                     // setTimeout(function(){ $('#restaurant_enable').hide();  }, 3000);
                     $("#latesttimestamp").attr('value', data.latesttimestamp);
                     var latesttimestamp = $("#latesttimestamp").val();
-                   // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
+                    // alert(data.latesttimestamp);
+                    if (restaurantid != "" && latesttimestamp != "") {
                         insertData(restaurantid, latesttimestamp);
                     }
                 }
@@ -503,29 +585,32 @@
             type: "POST",
             data: {id: item_id},
             success: function (data) {
-                if(data.status == 1)
-                {
+                if (data.status == 1) {
                     $('#rest_disable').html(data.msg);
                     $('#restaurant_disable').show();
                     $("#items").dataTable().fnDestroy();
                     bind();
-                    setTimeout(function(){ $('#restaurant_disable').hide() }, 3000);
+                    setTimeout(function () {
+                        $('#restaurant_disable').hide()
+                    }, 3000);
                     $("#latesttimestamp").attr('value', data.latesttimestamp);
                     var latesttimestamp = $("#latesttimestamp").val();
-                   // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
+                    // alert(data.latesttimestamp);
+                    if (restaurantid != "" && latesttimestamp != "") {
                         insertData(restaurantid, latesttimestamp);
                     }
-                }else{
+                } else {
                     $('#rest_enable').html(data.msg);
                     $('#restaurant_enable').show();
                     $("#items").dataTable().fnDestroy();
                     bind();
-                    setTimeout(function(){ $('#restaurant_enable').hide() }, 3000);
+                    setTimeout(function () {
+                        $('#restaurant_enable').hide()
+                    }, 3000);
                     $("#latesttimestamp").attr('value', data.latesttimestamp);
                     var latesttimestamp = $("#latesttimestamp").val();
-                   // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
+                    // alert(data.latesttimestamp);
+                    if (restaurantid != "" && latesttimestamp != "") {
                         insertData(restaurantid, latesttimestamp);
                     }
                 }
@@ -543,29 +628,32 @@
             type: "POST",
             data: {id: item_id},
             success: function (data) {
-                if(data.status == 1)
-                {
+                if (data.status == 1) {
                     $('#rest_disable').html(data.msg);
                     $('#restaurant_disable').show();
                     $("#items").dataTable().fnDestroy();
                     bind();
-                    setTimeout(function(){ $('#restaurant_disable').hide() }, 3000);
+                    setTimeout(function () {
+                        $('#restaurant_disable').hide()
+                    }, 3000);
                     $("#latesttimestamp").attr('value', data.latesttimestamp);
                     var latesttimestamp = $("#latesttimestamp").val();
                     // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
+                    if (restaurantid != "" && latesttimestamp != "") {
                         insertData(restaurantid, latesttimestamp);
                     }
-                }else{
+                } else {
                     $('#rest_enable').html(data.msg);
                     $('#restaurant_enable').show();
                     $("#items").dataTable().fnDestroy();
                     bind();
-                    setTimeout(function(){ $('#restaurant_enable').hide() }, 3000);
+                    setTimeout(function () {
+                        $('#restaurant_enable').hide()
+                    }, 3000);
                     $("#latesttimestamp").attr('value', data.latesttimestamp);
                     var latesttimestamp = $("#latesttimestamp").val();
                     // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
+                    if (restaurantid != "" && latesttimestamp != "") {
                         insertData(restaurantid, latesttimestamp);
                     }
                 }
@@ -573,113 +661,107 @@
         });
     });
 
-    function bind_categories(menuID)
-    {
+    function bind_categories(menuID) {
         //console.log(menuID);
-        if(menuID == null)
-        {
+        if (menuID == null) {
             getAllCategories();
-        }else
-        {
+        } else {
             var post_url = '<?php echo base_url() ?>restaurant/items/getCategories'
-                $.ajax({
-                    url: post_url,
-                    type: "POST",
-                    data : { "menuId" : menuID },
-                    datatype : "json",
-                    success:function(data) {
-                        $('#categories').empty();
-                        //console.log(data);
-                        if(data.length != 0)
-                        {
-                            //console.log('in');
-                            $.each(data, function(key, value) {
-                               // console.log(data);
-                                $('#categories').append('<option value="'+ value.id +'">'+ value.title +'</option>');
-                                $('.selectpicker').selectpicker('refresh');
-                            });
-                        }else
-                        {
-                            $('#categories').empty();
+            $.ajax({
+                url: post_url,
+                type: "POST",
+                data: {"menuId": menuID},
+                datatype: "json",
+                success: function (data) {
+                    $('#categories').empty();
+                    //console.log(data);
+                    if (data.length != 0) {
+                        //console.log('in');
+                        $.each(data, function (key, value) {
+                            // console.log(data);
+                            $('#categories').append('<option value="' + value.id + '">' + value.title + '</option>');
                             $('.selectpicker').selectpicker('refresh');
-                        }
+                        });
+                    } else {
+                        $('#categories').empty();
+                        $('.selectpicker').selectpicker('refresh');
                     }
-                });
+                }
+            });
         }
     }
 
-    function sendOrderToServer() 
-    {
+    function sendOrderToServer() {
         var order = [];
-        
-        $('.order_row1').each(function(index,element) 
-        {
+
+        $('.order_row1').each(function (index, element) {
             order.push({
                 id: $(this).attr('data-id'),
-                position: index+1
+                position: index + 1
             });
         });
 
         $.ajax({
-            type: "POST", 
-            dataType: "json", 
+            type: "POST",
+            dataType: "json",
             url: "<?php echo base_url("restaurant/items/sortabledatatable"); ?>",
             data: {
-            order:order,
+                order: order,
             },
-            success: function(response) 
-            {
+            success: function (response) {
                 if (response.status == "success") {
-                //console.log(response);
+                    //console.log(response);
                 } else {
-                //console.log(response);
+                    //console.log(response);
                 }
-            $("#latesttimestamp").attr('value', response.latesttimestamp);
-                    var latesttimestamp = $("#latesttimestamp").val();
-                   // alert(data.latesttimestamp);
-                    if(restaurantid !="" && latesttimestamp !=""){
-                        insertData(restaurantid, latesttimestamp);
-                    }    
+                $("#latesttimestamp").attr('value', response.latesttimestamp);
+                var latesttimestamp = $("#latesttimestamp").val();
+                // alert(data.latesttimestamp);
+                if (restaurantid != "" && latesttimestamp != "") {
+                    insertData(restaurantid, latesttimestamp);
+                }
             }
         });
     }
 </script>
-<?php if($this->session->userdata('login_user')['id'] !="" && !empty($this->session->userdata('login_user')['id'])){
-    $sql = "SELECT GREATEST(MAX(IFNULL(m.created_at,0)), MAX(IFNULL(m.updated_at,0)),MAX(IFNULL(u.created_at,0)), MAX(IFNULL(u.updated_at,0)),MAX(IFNULL(s.created_at,0)), MAX(IFNULL(s.updated_at,0))) as latesttimestamp FROM menus m LEFT JOIN users as u on u.restaurant_id = m.restaurant_id LEFT JOIN settings as s on s.user_id = m.restaurant_id WHERE m.restaurant_id = '".$this->session->userdata('login_user')['id']."'";
+<?php if ($this->session->userdata('login_user')['id'] != "" && !empty($this->session->userdata('login_user')['id'])) {
+    $sql = "SELECT GREATEST(MAX(IFNULL(m.created_at,0)), MAX(IFNULL(m.updated_at,0)),MAX(IFNULL(u.created_at,0)), MAX(IFNULL(u.updated_at,0)),MAX(IFNULL(s.created_at,0)), MAX(IFNULL(s.updated_at,0))) as latesttimestamp FROM menus m LEFT JOIN users as u on u.restaurant_id = m.restaurant_id LEFT JOIN settings as s on s.user_id = m.restaurant_id WHERE m.restaurant_id = '" . $this->session->userdata('login_user')['id'] . "'";
     $query = $this->db->query($sql);
     if ($query->num_rows() > 0) {
-  foreach ($query->result() as $row) {?>
-     <?php $latesttimestamp = $row->latesttimestamp;?>
-<?php }
-}
+        foreach ($query->result() as $row) { ?>
+            <?php $latesttimestamp = $row->latesttimestamp; ?>
+        <?php }
+    }
 }
 ?>
 <script src="https://www.gstatic.com/firebasejs/5.8.1/firebase.js"></script>
 <input type="hidden" name="latesttimestamp" id="latesttimestamp" value="<?php echo $latesttimestamp; ?>">
 <script type="text/javascript">
-   // $( document ).ready(function() {
-     //   alert('hello');
-      // Initialize Firebase
-  var config = {
-    apiKey: "AIzaSyB6Y0E1yzKwk00C_ks7YsXwTHkaZJuFSM0",
-    authDomain: "cherrymenu-44b6e.firebaseapp.com",
-    databaseURL: "https://cherrymenu-44b6e.firebaseio.com",
-    projectId: "cherrymenu-44b6e",
-    storageBucket: "cherrymenu-44b6e.appspot.com",
-    messagingSenderId: "832799477411"
-  };
-  firebase.initializeApp(config);
-        var restaurantid = <?php echo $this->session->userdata('login_user')['id'];?>;
-        var latesttimestamp = $("#latesttimestamp").val();
-       // alert(restaurantid,latesttimestamp);
-        if(restaurantid !="" && latesttimestamp !=""){
-            insertData(restaurantid, latesttimestamp);
-        }
+    // $( document ).ready(function() {
+    //   alert('hello');
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyB6Y0E1yzKwk00C_ks7YsXwTHkaZJuFSM0",
+        authDomain: "cherrymenu-44b6e.firebaseapp.com",
+        databaseURL: "https://cherrymenu-44b6e.firebaseio.com",
+        projectId: "cherrymenu-44b6e",
+        storageBucket: "cherrymenu-44b6e.appspot.com",
+        messagingSenderId: "832799477411"
+    };
+    firebase.initializeApp(config);
+    var restaurantid = <?php echo $this->session->userdata('login_user')['id'];?>;
+    var latesttimestamp = $("#latesttimestamp").val();
+    // alert(restaurantid,latesttimestamp);
+    if (restaurantid != "" && latesttimestamp != "") {
         insertData(restaurantid, latesttimestamp);
-        function insertData(restaurantid, latesttimestamp) {
-            firebase.database().ref('Restaurants/' + restaurantid).set({
-                LastUpdatedTime: latesttimestamp,
-            });          
-        }
-      //  });
-    </script>
+    }
+    insertData(restaurantid, latesttimestamp);
+
+    function insertData(restaurantid, latesttimestamp) {
+        firebase.database().ref('Restaurants/' + restaurantid).set({
+            LastUpdatedTime: latesttimestamp,
+        });
+    }
+
+    //  });
+</script>

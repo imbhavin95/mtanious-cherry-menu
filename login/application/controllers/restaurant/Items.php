@@ -734,6 +734,21 @@ class Items extends MY_Controller
         }
     }
 
+    public function pricing_update(){
+        $priceShow = $this->input->post('priceShow');
+        $itemsIds = $this->db->query("SELECT DISTINCT i.id FROM items i INNER JOIN item_details as id ON id.item_id = i.id INNER JOIN menus as m ON m.id = id.menu_id INNER JOIN categories as c ON c.id = id.category_id WHERE i.is_active='1' and i.is_deleted = '0' and m.is_active='1' and m.is_deleted = '0' and c.is_active='1' and c.is_deleted = '0' and m.restaurant_id = '".$this->restaurant_id."'")->result_array();
+        if(!empty($itemsIds) && count($itemsIds) > 0){
+            foreach($itemsIds as $itemId){
+                $update_array = array(
+                    'is_price_show' => $priceShow,
+                    'updated_at' => date('Y-m-d H:i:s')
+                );
+                $this->Items_model->common_insert_update('update', TBL_ITEMS, $update_array, ['id' => $itemId['id']]);
+            }
+        }
+        redirect('restaurant/items');
+    }
+
     public function images($id)
     {
         $data['title'] = WEBNAME.' | Item Images';
